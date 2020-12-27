@@ -9,13 +9,13 @@
                 </div>
             @endif
 
-            <form action="{{ route('login') }}" method="post">
+            <form action="{{ route('password.update') }}" method="post">
                 @csrf
 
                 <div class="mb-4">
                     <label for="email" class="sr-only">Email</label>
                     <input type="text" name="email" id="email" placeholder="Your email" class="bg-gray-100 border-2 w-full p-4 rounded-lg
-                @error('email') border-red-500 @enderror" value="{{ old('email') }}">
+                @error('email') border-red-500 @enderror">
 
                     @error('email')
                     <div class="text-red-500 mt-2 text-sm">
@@ -26,7 +26,7 @@
 
                 <div class="mb-4">
                     <label for="password" class="sr-only">Password</label>
-                    <input type="password" name="password" id="password" placeholder="Your password" class="bg-gray-100 border-2 w-full p-4 rounded-lg
+                    <input type="password" name="password" id="password" placeholder="Choose a password" class="bg-gray-100 border-2 w-full p-4 rounded-lg
                 @error('password') border-red-500 @enderror" value="">
 
                     @error('password')
@@ -37,21 +37,23 @@
                 </div>
 
                 <div class="mb-4">
-                    <div class="flex items-center">
-                        <input type="checkbox" name="remember" id="remember" class="mr-2">
-                        <label for="remember">Merken</label>
+                    <label for="password_confirmation" class="sr-only">Password again</label>
+                    <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Repeat your password"
+                           class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('password_confirmation') border-red-500 @enderror" value="">
+
+                    @error('password_confirmation')
+                    <div class="text-red-500 mt-2 text-sm">
+                        {{ $message }}
                     </div>
+                    @enderror
                 </div>
 
+                <input type="hidden" name="token" id="token" value="{{$token}}">
+
                 <div>
-                    <button type="submit" class="bg-blue-500 text-white px-4 py-3 rounded font-medium w-full">Login</button>
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-3 rounded font-medium w-full">Passwort zurücksetzen</button>
                 </div>
             </form>
-
-                <div>
-                    <a href="{{ route('password.request') }}" class="">Passwort vergessen</a>
-                </div>
-
         </div>
     </div>
 @endsection
