@@ -47,10 +47,14 @@
                     <button type="submit" class="bg-blue-500 text-white px-4 py-3 rounded font-medium w-full">Login</button>
                 </div>
             </form>
-
-                <div>
-                    <a href="{{ route('password.request') }}" class="">Passwort vergessen</a>
+            <div class="flex justify-between pt-3">
+                <div class="font-medium">
+                    <a href="{{ route('register') }}" class="">Noch keinen Account?</a>
                 </div>
+                <div class="font-medium">
+                    <a href="{{ route('password.request') }}" class="">Passwort vergessen?</a>
+                </div>
+            </div>
 
         </div>
     </div>

@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\ProfilesController;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
@@ -43,9 +44,10 @@ Route::get('/highscores', function () {
     return view('highscores.index');
 })->name('highscores');
 
-Route::get('/results', function () {
-    return view('games.index');
-})->name('results');
+Route::get('/results', [GameController::class, 'index'])->name('results');
+Route::post('/game', [GameController::class, 'store'])->name('game.store');
+Route::get('/game/create', [GameController::class, 'create'])->name('game.create');
+Route::get('/game/{game}', [GameController::class, 'show'])->name('game.show');
 
 Route::get('/', function () {
     return view('home.index');

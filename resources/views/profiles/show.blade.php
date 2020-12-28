@@ -25,7 +25,7 @@
                 <div class="w-3/4 bg-gray-100 shadow rounded-lg p-3 flex flex-col justify-between">
                     <div>
                         <div class="text-lg px-3">
-                            Name: {{ $user->name }} <br/>
+                            <span class="font-medium">Name: </span>{{ $user->name }} <br/>
                         </div>
                         <div class="py-5">
                             <div class="font-bold text-2xl p-3">

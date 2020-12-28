@@ -4,10 +4,17 @@
     <div class="flex justify-center">
         <div class="w-4/12 bg-white p-6 rounded-lg">
 
+            <div class="flex justify-between">
             <div class="text-2xl font-medium mb-4">
                 Profil bearbeiten
             </div>
 
+            <a href="{{ route('profiles.show', $user->username) }}">
+                <div class="bg-gray-200 rounded-lg p-1">
+                    Abbrechen
+                </div>
+            </a>
+            </div>
             <form action="{{ route('profiles.update', $user->id) }}" enctype="multipart/form-data" method="post">
                 @csrf
                 @method('PATCH')
