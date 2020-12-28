@@ -42,6 +42,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function($user) {
+            $user->profile()->create([
+                'description' => "Keine Beschreibung vorhanden...",
+                'image' => '/profile/default/90FudTwfyrxMl6BJkTdqqxN3E9qK6yHnUq7P7YlU.png',
+            ]);
+        });
+    }
+
     public function profile()
     {
         return $this->hasOne(Profile::class);
