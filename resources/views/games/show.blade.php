@@ -10,7 +10,8 @@
             </div>
 
             <div class="flex justify-center py-2">
-                <div class="bg-gray-100 rounded-lg w-3/4 h-80">
+                <div class="bg-gray-100 rounded-lg w-3/4 flex justify-center">
+                    <img src="{{ $game->gameImage() }}">
                 </div>
             </div>
             <div class="flex justify-center pb-2">

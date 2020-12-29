@@ -3,12 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="47cc0b8b-af5a-48ab-b8ac-b1f0818f9d52" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GameController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Game.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Game.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/games/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/games/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/profiles/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profiles/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/profiles/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profiles/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -169,6 +167,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\WFR\BrowserGameCollection\storage\app\public\games\default" />
       <recent name="D:\WFR\BrowserGameCollection\storage\app\public\profile\default" />
     </key>
   </component>
@@ -193,7 +192,8 @@
       <workItem from="1609080899444" duration="408000" />
       <workItem from="1609087655138" duration="4054000" />
       <workItem from="1609149628655" duration="11040000" />
-      <workItem from="1609191461030" duration="4381000" />
+      <workItem from="1609191461030" duration="4491000" />
+      <workItem from="1609239336013" duration="4283000" />
     </task>
     <servers />
   </component>

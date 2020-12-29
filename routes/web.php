@@ -48,6 +48,8 @@ Route::get('/results', [GameController::class, 'index'])->name('results');
 Route::post('/game', [GameController::class, 'store'])->name('game.store');
 Route::get('/game/create', [GameController::class, 'create'])->name('game.create');
 Route::get('/game/{game}', [GameController::class, 'show'])->name('game.show');
+Route::get('/game/{game}/edit', [GameController::class, 'edit'])->name('game.edit');
+Route::patch('/game/{game}', [GameController::class, 'update'])->name('game.update');
 
 Route::get('/', function () {
     return view('home.index');
