@@ -10,8 +10,12 @@
             </div>
 
             <div class="flex justify-center py-2">
-                <div class="bg-gray-100 rounded-lg w-3/4 flex justify-center">
-                    <img src="{{ $game->gameImage() }}">
+                <div class="bg-gray-100 rounded-lg w-3/4 flex justify-center" id="game-window">
+                    @if($game->realGame == 'false')
+                        <img src="{{ $game->gameImage() }}">
+                    @endif
+
+
                 </div>
             </div>
             <div class="flex justify-center pb-2">
@@ -24,7 +28,7 @@
             <hr>
 
             <div class="py-2">
-                <span class="font-medium text-xl">Beschreibung</span>
+                <span class="font-medium text-xl" id="test">Beschreibung</span>
                 <div>
                     {{ $game->description }}
                 </div>
@@ -41,4 +45,9 @@
 
         </div>
     </div>
+
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/games')}}/{{ $game->title }}/game.js"></script>
+@endpush

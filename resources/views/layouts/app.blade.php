@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BrowserGameCollection</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.50.0/dist/phaser-arcade-physics.min.js"></script>
 </head>
 <body class="bg-gray-200">
 <nav class="p-6 bg-white flex justify-between mb-6">
@@ -53,6 +54,9 @@
 
     </ul>
 </nav>
+<div>
 @yield('content')
+</div>
+@stack('scripts')
 </body>
 </html>

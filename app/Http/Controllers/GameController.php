@@ -37,6 +37,7 @@ class GameController extends Controller
             'developer' => 'required',
             'description' => 'required',
             'image' => 'image',
+            'realGame' => '',
         ]);
 
         if (request('image')) {
@@ -65,6 +66,7 @@ class GameController extends Controller
                 'developer' => 'required',
                 'description' => 'required',
                 'image' => 'image',
+                'realGame' => '',
             ]);
         }else {
             $data = request()->validate([
@@ -72,6 +74,7 @@ class GameController extends Controller
                 'developer' => 'required',
                 'description' => 'required',
                 'image' => 'image',
+                'realGame' => '',
             ]);
         }
 

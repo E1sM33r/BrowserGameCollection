@@ -19,6 +19,7 @@ class CreateGamesTable extends Migration
             $table->string('developer');
             $table->string('description');
             $table->string('image')->nullable();
+            $table->string('realGame');
             $table->timestamps();
         });
     }

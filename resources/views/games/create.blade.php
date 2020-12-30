@@ -49,6 +49,14 @@
                     @enderror
                 </div>
 
+                <div class="mb-4 flex items-center">
+                    <label for="demoGame" class="pr-2">Nur Demo</label>
+                    <input type="radio" name="realGame" id="demoGame" class="bg-gray-100 border-2 p-4 rounded-lg" value="false" checked>
+                    <label for="demoGame" class="px-4">Echtes Game</label>
+                    <input type="radio" name="realGame" id="realGame" class="bg-gray-100 border-2 p-4 rounded-lg" value="true">
+
+                </div>
+
                 <div class="mb-4">
                     <label for="image" class="font-medium mb-2">Titelbild</label><br/>
 
