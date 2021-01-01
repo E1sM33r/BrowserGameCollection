@@ -58,4 +58,22 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class);
     }
+
+    public function highscores()
+    {
+        return$this->hasMany(Highscore::class);
+    }
+
+    public function hasHighscore(Game $game)
+    {
+        $highscores = $this->highscores;
+
+        foreach ($highscores as $highscore){
+            if ($highscore->game_id == $game->id){
+                return $highscore->score;
+            }
+        }
+
+        return '0';
+    }
 }

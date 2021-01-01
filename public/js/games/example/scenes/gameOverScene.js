@@ -18,10 +18,18 @@ class gameOverScene extends Phaser.Scene {
             newHighscore.setOrigin(0.5, 0.5);
             highscore = score;
             score = 0;
+
+            document.getElementById('highscore').value = highscore;
+            document.getElementById("highscoreForm").submit();
         }
+
+        score = 0;
 
         const restartText = this.add.text(400,350, 'Click to restart');
         restartText.setOrigin(0.5, 0.5);
+
+
+
 
         this.input.on('pointerdown', function (event) {
             this.scene.start("gameScene");

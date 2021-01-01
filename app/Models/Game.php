@@ -17,4 +17,14 @@ class Game extends Model
 
         return '/storage/' . $imagePath;
     }
+
+    public function hasHighscore(User $user)
+    {
+        return $this->highscores->contains('user_id', $user->id);
+    }
+
+    public function highscores()
+    {
+        return$this->hasMany(Highscore::class);
+    }
 }

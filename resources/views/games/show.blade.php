@@ -39,7 +39,7 @@
             <div class="py-2">
                 <span class="font-medium text-xl">Highscores</span>
                 <div>
-                    Highscores
+                    {{ auth()->user()->hasHighscore($game) }}
                 </div>
             </div>
 
@@ -49,6 +49,12 @@
 @endsection
 
 @push('scripts')
+    <input type="hidden" name="oldHighscore" id="oldHighscore" value="{{ auth()->user()->hasHighscore($game) }}">
+    <form action="{{ route('game.addHighscore', $game->id) }}" method="post" id="highscoreForm">
+        @csrf
+        <input type="hidden" name="highscore" id="highscore" value="">
+    </form>
+
     <script src="{{ asset('js/games')}}/{{ $game->title }}/scenes/gameScene.js"></script>
     <script src="{{ asset('js/games')}}/{{ $game->title }}/scenes/gameOverScene.js"></script>
     <script src="{{ asset('js/games')}}/{{ $game->title }}/scenes/titleScene.js"></script>
