@@ -35,13 +35,24 @@
             </div>
 
             <hr>
-
             <div class="py-2">
                 <span class="font-medium text-xl">Highscores</span>
-                <div>
-                    @auth()
-                        {{ auth()->user()->hasHighscore($game) }}
-                    @endauth
+                <div class="flex flex-col items-center">
+                    <table class="w-1/2 table-fixed border-collapse">
+                        <tr>
+                            <th class="w-1/6 bg-gray-100 border border-black">Position</th>
+                            <th class="w-1/2 bg-gray-200 border border-black">Nickname</th>
+                            <th class="w-2/6 bg-gray-100 border border-black">Score</th>
+                        </tr>
+                        @for($i = 0; $i<$highscores->count(); $i++)
+                            <tr>
+                                <td class="bg-gray-100 text-center border border-black">{{ $i+1 }}</td>
+                                <td class="bg-gray-200 text-center border border-black">{{ $highscores[$i]->user->username }}</td>
+                                <td class="bg-gray-100 text-center border border-black">{{ $highscores[$i]->score }}</td>
+                            </tr>
+                        @endfor
+
+                    </table>
 
                 </div>
             </div>

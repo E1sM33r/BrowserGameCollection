@@ -10,13 +10,13 @@ class HighscoreController extends Controller
     public function store(Game $game, Request $request)
     {
         if ($game->hasHighscore($request->user())){
-            $game->highscores()->update([
-                'user_id' => $request->user()->id,
+            $request->user()->highscores()->update([
+                'game_id' => $game->id,
                 'score' => $request->highscore,
             ]);
         }else{
-            $game->highscores()->create([
-                'user_id' => $request->user()->id,
+            $request->user()->highscores()->create([
+                'game_id' => $game->id,
                 'score' => $request->highscore,
             ]);
         }

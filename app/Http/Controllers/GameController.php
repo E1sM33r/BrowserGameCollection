@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Game;
+use App\Models\Highscore;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
@@ -17,7 +18,10 @@ class GameController extends Controller
 
     public  function show(Game $game)
     {
-        return view('games.show', compact('game'));
+        $highscores = Highscore::where('game_id', $game->id)->orderByDesc('score')->orderBy('updated_at')->get();
+
+
+        return view('games.show', compact('game', 'highscores'));
     }
 
     public function create()
