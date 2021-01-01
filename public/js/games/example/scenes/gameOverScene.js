@@ -19,8 +19,10 @@ class gameOverScene extends Phaser.Scene {
             highscore = score;
             score = 0;
 
-            document.getElementById('highscore').value = highscore;
-            document.getElementById("highscoreForm").submit();
+            if (document.getElementById("highscore")){
+                document.getElementById('highscore').value = highscore;
+                document.getElementById("highscoreForm").submit();
+            }
         }
 
         score = 0;

@@ -4,7 +4,10 @@ var bombs;
 var platforms;
 var cursors;
 var score = 0;
-var highscore = document.getElementById('oldHighscore').value;
+var highscore = 0;
+if(document.getElementById("oldHighscore")){
+    highscore = document.getElementById('oldHighscore').value;
+}
 var gameOver = false;
 var scoreText;
 
