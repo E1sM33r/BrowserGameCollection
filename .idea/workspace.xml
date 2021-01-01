@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="47cc0b8b-af5a-48ab-b8ac-b1f0818f9d52" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GameController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HighscoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HighscoreController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/games/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/games/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -205,6 +205,7 @@
       <workItem from="1609501415598" duration="229000" />
       <workItem from="1609501647254" duration="7434000" />
       <workItem from="1609512362639" duration="969000" />
+      <workItem from="1609520264733" duration="2681000" />
     </task>
     <servers />
   </component>

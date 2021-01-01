@@ -10,7 +10,7 @@ class HighscoreController extends Controller
     public function store(Game $game, Request $request)
     {
         if ($game->hasHighscore($request->user())){
-            $request->user()->highscores()->update([
+            $request->user()->highscores->where('game_id', $game->id)->first()->update([
                 'game_id' => $game->id,
                 'score' => $request->highscore,
             ]);

@@ -42,15 +42,23 @@
                         <tr>
                             <th class="w-1/6 bg-gray-100 border border-black">Position</th>
                             <th class="w-1/2 bg-gray-200 border border-black">Nickname</th>
-                            <th class="w-2/6 bg-gray-100 border border-black">Score</th>
+                            <th class="w-1/6 bg-gray-100 border border-black">Score</th>
+                            <th class="w-2/6 bg-gray-200 border border-black">Wann</th>
                         </tr>
-                        @for($i = 0; $i<$highscores->count(); $i++)
+                        @if($highscores->count()==0)
                             <tr>
-                                <td class="bg-gray-100 text-center border border-black">{{ $i+1 }}</td>
-                                <td class="bg-gray-200 text-center border border-black">{{ $highscores[$i]->user->username }}</td>
-                                <td class="bg-gray-100 text-center border border-black">{{ $highscores[$i]->score }}</td>
+                                <td colspan="4" class="text-center bg-gray-100 border border-black">Keine Highscores vorhanden</td>
                             </tr>
-                        @endfor
+                        @else
+                            @for($i = 0; $i<$highscores->count(); $i++)
+                                <tr>
+                                    <td class="bg-gray-100 text-center border border-black">{{ $i+1 }}</td>
+                                    <td class="bg-gray-200 text-center border border-black">{{ $highscores[$i]->user->username }}</td>
+                                    <td class="bg-gray-100 text-center border border-black">{{ $highscores[$i]->score }}</td>
+                                    <td class="bg-gray-200 text-center border border-black">{{ $highscores[$i]->updated_at->format('d.m.Y - H:i') }}</td>
+                                </tr>
+                            @endfor
+                        @endif
 
                     </table>
 
