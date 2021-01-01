@@ -26,7 +26,7 @@ class LoginController extends Controller
         ]);
 
         if (!auth()->attempt($request->only('email', 'password'), $request->remember)){
-            return back()->with('status', 'Invalid login details');
+            return back()->with('status', 'Inkorrekte Login Daten');
         }
 
         return redirect()->route('home');

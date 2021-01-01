@@ -22,6 +22,11 @@ Route::post('/login', [LoginController::class, 'store']);
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
+Route::get('/account/{user}/edit', [RegisterController::class, 'edit'])->name('register.edit');
+Route::get('/account/{user}/changepw', [RegisterController::class, 'editPW'])->name('register.editPW');
+Route::patch('/account/{user}', [RegisterController::class, 'update'])->name('register.update');
+Route::patch('/achangepw/{user}', [RegisterController::class, 'updatePW'])->name('register.updatePW');
+
 
 Route::get('/forgot-password', function () {
     return view('auth.forgot-password');

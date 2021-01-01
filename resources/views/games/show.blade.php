@@ -12,7 +12,7 @@
             <div class="flex justify-center py-2">
                 <div class="bg-gray-100 rounded-lg w-3/4 flex justify-center" id="game-window">
                     @if($game->realGame == 'false')
-                        <img src="{{ $game->gameImage() }}">
+                        <img src="{{ $game->gameImage() }}" alt="Game Screenshot">
                     @endif
 
 
