@@ -49,5 +49,8 @@
 @endsection
 
 @push('scripts')
+    <script src="{{ asset('js/games')}}/{{ $game->title }}/scenes/gameScene.js"></script>
+    <script src="{{ asset('js/games')}}/{{ $game->title }}/scenes/gameOverScene.js"></script>
+    <script src="{{ asset('js/games')}}/{{ $game->title }}/scenes/titleScene.js"></script>
     <script src="{{ asset('js/games')}}/{{ $game->title }}/game.js"></script>
 @endpush
