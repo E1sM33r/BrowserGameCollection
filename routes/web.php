@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\HighscoreController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfilesController;
 use App\Http\Controllers\UserController;
 use Illuminate\Auth\Events\PasswordReset;
@@ -59,6 +60,4 @@ Route::get('/game/{game}/edit', [GameController::class, 'edit'])->name('game.edi
 Route::patch('/game/{game}', [GameController::class, 'update'])->name('game.update');
 Route::post('/game/{game}/highscore', [HighscoreController::class, 'store'])->name('game.addHighscore');
 
-Route::get('/', function () {
-    return view('home.index');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
