@@ -16,7 +16,7 @@
                 </a>
             </div>
 
-            <form action="{{ route('register.update', $user->id) }}" method="post">
+            <form action="{{ route('user.update', $user->id) }}" method="post">
                 @csrf
                 @method('PATCH')
 

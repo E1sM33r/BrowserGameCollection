@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\HighscoreController;
 use App\Http\Controllers\ProfilesController;
+use App\Http\Controllers\UserController;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -22,10 +23,10 @@ Route::post('/login', [LoginController::class, 'store']);
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
-Route::get('/account/{user}/edit', [RegisterController::class, 'edit'])->name('register.edit');
-Route::get('/account/{user}/changepw', [RegisterController::class, 'editPW'])->name('register.editPW');
-Route::patch('/account/{user}', [RegisterController::class, 'update'])->name('register.update');
-Route::patch('/achangepw/{user}', [RegisterController::class, 'updatePW'])->name('register.updatePW');
+Route::get('/account/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
+Route::get('/account/{user}/changepw', [UserController::class, 'editPW'])->name('user.editPW');
+Route::patch('/account/{user}', [UserController::class, 'update'])->name('user.update');
+Route::patch('/achangepw/{user}', [UserController::class, 'updatePW'])->name('user.updatePW');
 
 
 Route::get('/forgot-password', function () {

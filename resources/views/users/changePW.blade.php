@@ -22,7 +22,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('register.updatePW', $user->id) }}" method="post">
+            <form action="{{ route('user.updatePW', $user->id) }}" method="post">
                 @csrf
                 @method('PATCH')
 

@@ -6,8 +6,8 @@
             <form action="{{ route('register') }}" method="post">
             @csrf
             <div class="mb-4">
-                <label for="name" class="sr-only">Name</label>
-                <input type="text" name="name" id="name" placeholder="Your name" class="bg-gray-100 border-2 w-full p-4 rounded-lg
+                <label for="name" class="">Name:</label>
+                <input type="text" name="name" id="name" placeholder="Name" class="bg-gray-100 border-2 w-full p-4 rounded-lg
                 @error('name') border-red-500 @enderror" value="{{ old('name') }}">
 
                 @error('name')
@@ -18,7 +18,7 @@
             </div>
 
             <div class="mb-4">
-                <label for="username" class="sr-only">Username</label>
+                <label for="username" class="">Username:</label>
                 <input type="text" name="username" id="username" placeholder="Username" class="bg-gray-100 border-2 w-full p-4 rounded-lg
                 @error('username') border-red-500 @enderror" value="{{ old('username') }}">
 
@@ -30,8 +30,8 @@
             </div>
 
             <div class="mb-4">
-                <label for="email" class="sr-only">Email</label>
-                <input type="text" name="email" id="email" placeholder="Your email" class="bg-gray-100 border-2 w-full p-4 rounded-lg
+                <label for="email" class="">E-Mail Adresse:</label>
+                <input type="text" name="email" id="email" placeholder="E-Mail Adresse" class="bg-gray-100 border-2 w-full p-4 rounded-lg
                 @error('email') border-red-500 @enderror" value="{{ old('email') }}">
 
                 @error('email')
@@ -42,8 +42,8 @@
             </div>
 
             <div class="mb-4">
-                <label for="password" class="sr-only">Password</label>
-                <input type="password" name="password" id="password" placeholder="Choose a password" class="bg-gray-100 border-2 w-full p-4 rounded-lg
+                <label for="password" class="">Passwort:</label>
+                <input type="password" name="password" id="password" placeholder="Passwort" class="bg-gray-100 border-2 w-full p-4 rounded-lg
                 @error('password') border-red-500 @enderror" value="">
 
                 @error('password')
@@ -54,8 +54,8 @@
             </div>
 
             <div class="mb-4">
-                <label for="password_confirmation" class="sr-only">Password again</label>
-                <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Repeat your password"
+                <label for="password_confirmation" class="">Passwort bestätigen:</label>
+                <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Passwort bestätigen"
                        class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('password_confirmation') border-red-500 @enderror" value="">
 
                 @error('password_confirmation')

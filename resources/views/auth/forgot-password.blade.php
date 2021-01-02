@@ -14,7 +14,7 @@
 
                 <div class="mb-4">
                     <label for="email" class="sr-only">Email</label>
-                    <input type="text" name="email" id="email" placeholder="Your email" class="bg-gray-100 border-2 w-full p-4 rounded-lg
+                    <input type="text" name="email" id="email" placeholder="E-Mail Adresse eingeben" class="bg-gray-100 border-2 w-full p-4 rounded-lg
                 @error('email') border-red-500 @enderror">
 
                     @error('email')
