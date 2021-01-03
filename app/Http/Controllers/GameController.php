@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Game;
 use App\Models\Highscore;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 
 class GameController extends Controller
@@ -18,8 +19,14 @@ class GameController extends Controller
 
     public  function show(Game $game)
     {
-        $highscores = Highscore::where('game_id', $game->id)->orderByDesc('score')->orderBy('updated_at')->get();
+        // Alte Version ohne Rank
+        //$highscores = Highscore::where('game_id', $game->id)->orderByDesc('score')->orderBy('updated_at')->take(10)->get();
 
+        $highscoresData = DB::select( DB::raw("SELECT *, RANK() OVER (ORDER BY score DESC, updated_at) rank FROM highscores WHERE game_id = :gameid GROUP BY id, user_id, game_id, score, created_at, updated_at ORDER BY rank LIMIT 10"), array(
+            'gameid' => $game->id,
+        ));
+
+        $highscores = Highscore::hydrate($highscoresData);
 
         return view('games.show', compact('game', 'highscores'));
     }

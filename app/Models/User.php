@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -75,5 +76,21 @@ class User extends Authenticatable
         }
 
         return '0';
+    }
+
+    public function getHighscoreRank(Game $game)
+    {
+        $highscoresData = DB::select( DB::raw("SELECT *, RANK() OVER (ORDER BY score DESC, updated_at) rank FROM highscores WHERE game_id = :gameid GROUP BY id, user_id, game_id, score, created_at, updated_at ORDER BY rank"), array(
+            'gameid' => $game->id,
+        ));
+
+        $highscores = Highscore::hydrate($highscoresData);
+        $highscoresLength = count($highscores);
+
+        for ($i=0; $i < $highscoresLength; $i++){
+            if ($highscores[$i]->user_id == $this->id){
+                return $highscores[$i]->rank;
+            }
+        }
     }
 }

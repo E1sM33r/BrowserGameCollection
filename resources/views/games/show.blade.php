@@ -52,8 +52,8 @@
                         @else
                             @for($i = 0; $i<$highscores->count(); $i++)
                                 <tr>
-                                    <td class="bg-gray-100 text-center border border-black">{{ $i+1 }}</td>
-                                    <td class="bg-gray-200 text-center border border-black">{{ $highscores[$i]->user->username }}</td>
+                                    <td class="bg-gray-100 text-center border border-black">{{ $highscores[$i]->rank }}</td>
+                                    <td class="bg-gray-200 text-center border border-black"><a href="{{ route('profiles.show', $highscores[$i]->user->username) }}">{{ $highscores[$i]->user->username }}</a></td>
                                     <td class="bg-gray-100 text-center border border-black">{{ $highscores[$i]->score }}</td>
                                     <td class="bg-gray-200 text-center border border-black">{{ $highscores[$i]->updated_at->format('d.m.Y - H:i') }}</td>
                                 </tr>
