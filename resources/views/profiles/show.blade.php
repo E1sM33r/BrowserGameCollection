@@ -47,7 +47,7 @@
                                     Beschreibung
                                 </div>
                                 <div class="px-3">
-                                    {{ $user->profile->description }}
+                                    {!! nl2br(e($user->profile->description)) !!}
                                 </div>
                             </div>
                         </div>

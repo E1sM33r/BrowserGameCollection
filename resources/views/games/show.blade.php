@@ -30,7 +30,7 @@
             <div class="py-2">
                 <span class="font-medium text-xl" id="test">Beschreibung</span>
                 <div>
-                    {{ $game->description }}
+                    {!! nl2br(e($game->description)) !!}
                 </div>
             </div>
 
