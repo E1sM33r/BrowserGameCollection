@@ -24,7 +24,9 @@ class gameOverScene extends Phaser.Scene {
             }
         }
         score = 0;
-        timer = 90;
+        ammo = 5;
+        timer = 60;
+        reloading = false;
 
         const restartText = this.add.text(400,350, 'Click to restart');
         restartText.setOrigin(0.5, 0.5);
