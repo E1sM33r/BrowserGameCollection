@@ -3,6 +3,13 @@
 @section('content')
     <div class="flex justify-center">
         <div class="w-8/12 bg-white p-6 rounded-lg">
+
+            @if (session('status'))
+                <div class="bg-blue-500 p-4 rounded-lg mb-6 text-white text-center">
+                    {{ session('status') }}
+                </div>
+            @endif
+
             <p class="text-2xl font-medium py-2 px-4">Home - Featured Games</p>
 
             @if ($games->count())

@@ -15,11 +15,13 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
+        $this->authorize('update', $user);
         return view('users.edit', compact('user'));
     }
 
     public function update(Request $request, User $user)
     {
+        $this->authorize('update', $user);
 
         if((request('username') == $user->username) && (request('email') == $user->email)){
             $data = $request->validate([
@@ -54,11 +56,14 @@ class UserController extends Controller
 
     public function editPW(User $user)
     {
+        $this->authorize('update', $user);
         return view('users.changePW', compact('user'));
     }
 
     public function updatePW(Request $request, User $user)
     {
+        $this->authorize('update', $user);
+        
         if (Hash::check($request->oldPassword, $user->password)){
             $data = $request->validate([
                 'password' => 'required|min:8|confirmed',
@@ -72,5 +77,17 @@ class UserController extends Controller
         }else{
             return back()->with('status', 'Aktuelles Passwort inkorrekt');
         }
+    }
+
+    public function destroy(User $user)
+    {
+        $this->authorize('update', $user);
+
+        auth()->logout();
+
+        $user->delete();
+
+        return redirect()->route('home')->with('status', 'Account gelöscht');;
+
     }
 }
