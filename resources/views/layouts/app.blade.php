@@ -18,6 +18,11 @@
         <li>
             <a href="{{ route('highscores') }}" class="p-1 m-2 bg-gray-200 rounded">Highscores</a>
         </li>
+        @auth
+        <li>
+            <a href="{{ route('favorites') }}" class="p-1 m-2 bg-gray-200 rounded">Favoriten</a>
+        </li>
+        @endauth
     </ul>
 
     <div class="w-3/12">

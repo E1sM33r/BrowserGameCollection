@@ -4,7 +4,9 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\GameLikeController;
 use App\Http\Controllers\HighscoreController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfilesController;
@@ -53,6 +55,8 @@ Route::get('/highscores', function () {
     return view('highscores.index');
 })->name('highscores');
 
+Route::get('/favorites', [FavoritesController::class, 'index'])->name('favorites');
+
 Route::get('/results', [GameController::class, 'index'])->name('results');
 Route::post('/game', [GameController::class, 'store'])->name('game.store');
 Route::get('/game/create', [GameController::class, 'create'])->name('game.create');
@@ -60,5 +64,8 @@ Route::get('/game/{game}', [GameController::class, 'show'])->name('game.show');
 Route::get('/game/{game}/edit', [GameController::class, 'edit'])->name('game.edit');
 Route::patch('/game/{game}', [GameController::class, 'update'])->name('game.update');
 Route::post('/game/{game}/highscore', [HighscoreController::class, 'store'])->name('game.addHighscore');
+
+Route::post('/game/{game}/likes', [GameLikeController::class, 'store'])->name('game.like');
+Route::delete('/game/{game}/likes', [GameLikeController::class, 'destroy'])->name('game.like');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');

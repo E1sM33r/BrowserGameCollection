@@ -21,7 +21,21 @@
             <div class="flex justify-center pb-2">
                 <div class="bg-gray- w-3/4 flex justify-between">
                     <span class="pl-2">Bewertung</span>
-                    <span class="pr-2">Like</span>
+
+                    @auth()
+                        @if(!$game->hasLiked(auth()->user()))
+                            <form action="{{ route('game.like', $game) }}" method="post">
+                                @CSRF
+                                <button type="submit" class="text-red-400">Merken</button>
+                            </form>
+                        @else
+                            <form action="{{ route('game.like', $game) }}" method="post">
+                                @CSRF
+                                @method('DELETE')
+                                <button type="submit" class="text-red-400">Vergessen</button>
+                            </form>
+                        @endif
+                    @endauth
                 </div>
             </div>
 
@@ -68,30 +82,20 @@
         </div>
     </div>
 
-@endsection
-
-@auth()
-    @push('scripts')
-
+    @auth()
         <input type="hidden" name="oldHighscore" id="oldHighscore" value="{{ auth()->user()->hasHighscore($game) }}">
         <form action="{{ route('game.addHighscore', $game->id) }}" method="post" id="highscoreForm">
             @csrf
             <input type="hidden" name="highscore" id="highscore" value="">
         </form>
+    @endauth
 
-        <script src="{{ asset('js/games')}}/{{ $game->title }}/scenes/gameScene.js"></script>
-        <script src="{{ asset('js/games')}}/{{ $game->title }}/scenes/gameOverScene.js"></script>
-        <script src="{{ asset('js/games')}}/{{ $game->title }}/scenes/titleScene.js"></script>
-        <script src="{{ asset('js/games')}}/{{ $game->title }}/game.js"></script>
-    @endpush
-@endauth
+@endsection
 
-@guest()
-    @push('scripts')
+@push('scripts')
+    <script src="{{ asset('js/games')}}/{{ $game->title }}/scenes/gameScene.js"></script>
+    <script src="{{ asset('js/games')}}/{{ $game->title }}/scenes/gameOverScene.js"></script>
+    <script src="{{ asset('js/games')}}/{{ $game->title }}/scenes/titleScene.js"></script>
+    <script src="{{ asset('js/games')}}/{{ $game->title }}/game.js"></script>
+@endpush
 
-        <script src="{{ asset('js/games')}}/{{ $game->title }}/scenes/gameScene.js"></script>
-        <script src="{{ asset('js/games')}}/{{ $game->title }}/scenes/gameOverScene.js"></script>
-        <script src="{{ asset('js/games')}}/{{ $game->title }}/scenes/titleScene.js"></script>
-        <script src="{{ asset('js/games')}}/{{ $game->title }}/game.js"></script>
-    @endpush
-@endguest

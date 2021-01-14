@@ -23,8 +23,18 @@ class Game extends Model
         return $this->highscores->contains('user_id', $user->id);
     }
 
+    public function hasLiked(User $user)
+    {
+        return $this->likes->contains('user_id', $user->id);
+    }
+
     public function highscores()
     {
-        return$this->hasMany(Highscore::class);
+        return $this->hasMany(Highscore::class);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
     }
 }
