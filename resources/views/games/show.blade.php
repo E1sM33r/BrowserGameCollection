@@ -21,17 +21,22 @@
             <div class="flex justify-center pb-2">
                 <div class="bg-gray- w-3/4 flex justify-between">
 
-                    <div class="flex">
+                    <div class="flex items-center">
                         <p class="pr-2">Bewertung</p>
 
                         @auth()
                         <form action="{{ route('game.rate', $game) }}" method="post">
                             @CSRF
-                            <input type="radio" id="1" name="rating" value="1" onclick="this.form.submit()">
-                            <input type="radio" id="2" name="rating" value="2" onclick="this.form.submit()">
-                            <input type="radio" id="3" name="rating" value="3" onclick="this.form.submit()">
-                            <input type="radio" id="4" name="rating" value="4" onclick="this.form.submit()">
-                            <input type="radio" id="5" name="rating" value="5" onclick="this.form.submit()">
+                            <label for="1" class="text-4xl text-gray-500 hover:text-yellow-500">&starf;</label>
+                            <input type="radio" id="1" name="rating" value="1" onclick="this.form.submit()" class="hidden">
+                            <label for="2" class="text-4xl text-gray-500 hover:text-yellow-500">&starf;</label>
+                            <input type="radio" id="2" name="rating" value="2" onclick="this.form.submit()" class="hidden">
+                            <label for="3" class="text-4xl text-gray-500 hover:text-yellow-500">&starf;</label>
+                            <input type="radio" id="3" name="rating" value="3" onclick="this.form.submit()" class="hidden">
+                            <label for="4" class="text-4xl text-gray-500 hover:text-yellow-500">&starf;</label>
+                            <input type="radio" id="4" name="rating" value="4" onclick="this.form.submit()" class="hidden">
+                            <label for="5" class="text-4xl text-gray-500 hover:text-yellow-500">&starf;</label>
+                            <input type="radio" id="5" name="rating" value="5" onclick="this.form.submit()" class="hidden">
                         </form>
                         @endauth
 
@@ -44,13 +49,13 @@
                         @if(!$game->hasLiked(auth()->user()))
                             <form action="{{ route('game.like', $game) }}" method="post">
                                 @CSRF
-                                <button type="submit" class="text-red-400">Merken</button>
+                                <button type="submit" class="text-gray-500 text-4xl hover:text-red-500">&hearts;</button>
                             </form>
                         @else
                             <form action="{{ route('game.like', $game) }}" method="post">
                                 @CSRF
                                 @method('DELETE')
-                                <button type="submit" class="text-red-400">Vergessen</button>
+                                <button type="submit" class="text-red-500 text-4xl hover:text-gray-500">&hearts;</button>
                             </form>
                         @endif
                     @endauth
@@ -115,5 +120,7 @@
     <script src="{{ asset('js/games')}}/{{ $game->title }}/scenes/gameOverScene.js"></script>
     <script src="{{ asset('js/games')}}/{{ $game->title }}/scenes/titleScene.js"></script>
     <script src="{{ asset('js/games')}}/{{ $game->title }}/game.js"></script>
+
+    <script src="{{asset('js/app.js')}}"></script>
 @endpush
 
