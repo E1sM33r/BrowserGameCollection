@@ -10,6 +10,7 @@ use App\Http\Controllers\GameLikeController;
 use App\Http\Controllers\HighscoreController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfilesController;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\UserController;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
@@ -64,6 +65,7 @@ Route::get('/game/{game}', [GameController::class, 'show'])->name('game.show');
 Route::get('/game/{game}/edit', [GameController::class, 'edit'])->name('game.edit');
 Route::patch('/game/{game}', [GameController::class, 'update'])->name('game.update');
 Route::post('/game/{game}/highscore', [HighscoreController::class, 'store'])->name('game.addHighscore');
+Route::post('/game/{game}/rate', [RatingController::class, 'store'])->name('game.rate');
 
 Route::post('/game/{game}/likes', [GameLikeController::class, 'store'])->name('game.like');
 Route::delete('/game/{game}/likes', [GameLikeController::class, 'destroy'])->name('game.like');

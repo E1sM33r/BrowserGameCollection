@@ -20,7 +20,25 @@
             </div>
             <div class="flex justify-center pb-2">
                 <div class="bg-gray- w-3/4 flex justify-between">
-                    <span class="pl-2">Bewertung</span>
+
+                    <div class="flex">
+                        <p class="pr-2">Bewertung</p>
+
+                        @auth()
+                        <form action="{{ route('game.rate', $game) }}" method="post">
+                            @CSRF
+                            <input type="radio" id="1" name="rating" value="1" onclick="this.form.submit()">
+                            <input type="radio" id="2" name="rating" value="2" onclick="this.form.submit()">
+                            <input type="radio" id="3" name="rating" value="3" onclick="this.form.submit()">
+                            <input type="radio" id="4" name="rating" value="4" onclick="this.form.submit()">
+                            <input type="radio" id="5" name="rating" value="5" onclick="this.form.submit()">
+                        </form>
+                        @endauth
+
+                        <p class="px-2">{{round($game->averageRating(), 2)}}</p>
+                        <p>({{$game->usersRated()}})</p>
+                    </div>
+
 
                     @auth()
                         @if(!$game->hasLiked(auth()->user()))

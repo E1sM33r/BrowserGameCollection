@@ -20,7 +20,11 @@
 
                                     <img src="{{$game->gameImage()}}" class="w-11/12 py-1">
 
-                                    <p class="p-1">Bewertung</p>
+                                    <div class="flex">
+                                        <p class="p-1">Bewertung</p>
+                                        <p class="p-1">{{ round($game->averageRating(), 2) }}</p>
+                                        <p class="py-1">({{$game->usersRated()}})</p>
+                                    </div>
                                 </div>
                             </a>
                         </div>

@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use willvincent\Rateable\Rateable;
 
 class Game extends Model
 {
     protected $guarded = [];
 
-    use HasFactory;
+    use HasFactory, Rateable;
 
     public function gameImage()
     {
