@@ -14,7 +14,7 @@
 
             @if ($games->count())
 
-                <div class="grid gap-4 grid-cols-3 pb-2">
+                <div class="grid gap-4 grid-cols-3 pb-2" id="app">
                     @foreach($games as $game)
 
                         <div class="bg-gray-100 rounded-lg p-1 m-4">
@@ -28,9 +28,8 @@
                                     <img src="{{$game->gameImage()}}" class="w-11/12 py-1">
 
                                     <div class="flex">
-                                        <p class="p-1">Bewertung</p>
-                                        <p class="p-1">{{ round($game->averageRating(), 2) }}</p>
-                                        <p class="py-1">({{$game->usersRated()}})</p>
+                                        <star-rating :rating="{{ round($game->averageRating(), 2) }}" :read-only="true" :increment="0.01" :star-size="30"></star-rating>
+                                        <p class="p-2">({{$game->usersRated()}} Bewertungen)</p>
                                     </div>
                                 </div>
                             </a>
@@ -45,4 +44,6 @@
             @endif
         </div>
     </div>
+
+    <script src="{{ mix('js/app.js') }}"></script>
 @endsection

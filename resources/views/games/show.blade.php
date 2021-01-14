@@ -22,26 +22,19 @@
                 <div class="bg-gray- w-3/4 flex justify-between">
 
                     <div class="flex items-center">
-                        <p class="pr-2">Bewertung</p>
 
                         @auth()
-                        <form action="{{ route('game.rate', $game) }}" method="post">
-                            @CSRF
-                            <label for="1" class="text-4xl text-gray-500 hover:text-yellow-500">&starf;</label>
-                            <input type="radio" id="1" name="rating" value="1" onclick="this.form.submit()" class="hidden">
-                            <label for="2" class="text-4xl text-gray-500 hover:text-yellow-500">&starf;</label>
-                            <input type="radio" id="2" name="rating" value="2" onclick="this.form.submit()" class="hidden">
-                            <label for="3" class="text-4xl text-gray-500 hover:text-yellow-500">&starf;</label>
-                            <input type="radio" id="3" name="rating" value="3" onclick="this.form.submit()" class="hidden">
-                            <label for="4" class="text-4xl text-gray-500 hover:text-yellow-500">&starf;</label>
-                            <input type="radio" id="4" name="rating" value="4" onclick="this.form.submit()" class="hidden">
-                            <label for="5" class="text-4xl text-gray-500 hover:text-yellow-500">&starf;</label>
-                            <input type="radio" id="5" name="rating" value="5" onclick="this.form.submit()" class="hidden">
-                        </form>
+                        <div id="app">
+                            <star-rating @rating-selected ="setRating" :rating="{{ $game->userAverageRating ?? 0 }}" :show-rating="false" :star-size="30"></star-rating>
+                            <form action="{{ route('game.rate', $game) }}" method="post" id="ratingForm">
+                                @CSRF
+                                <input type="hidden" name="rating" id="rating" value="1">
+                            </form>
+                        </div>
                         @endauth
 
                         <p class="px-2">{{round($game->averageRating(), 2)}}</p>
-                        <p>({{$game->usersRated()}})</p>
+                        <p>({{$game->usersRated()}} Bewertungen)</p>
                     </div>
 
 
@@ -113,6 +106,7 @@
         </form>
     @endauth
 
+    <script src="{{ mix('js/app.js') }}"></script>
 @endsection
 
 @push('scripts')
@@ -120,7 +114,5 @@
     <script src="{{ asset('js/games')}}/{{ $game->title }}/scenes/gameOverScene.js"></script>
     <script src="{{ asset('js/games')}}/{{ $game->title }}/scenes/titleScene.js"></script>
     <script src="{{ asset('js/games')}}/{{ $game->title }}/game.js"></script>
-
-    <script src="{{asset('js/app.js')}}"></script>
 @endpush
 

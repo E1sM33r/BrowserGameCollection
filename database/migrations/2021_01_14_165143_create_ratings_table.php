@@ -16,10 +16,9 @@ class CreateRatingsTable extends Migration
             $table->timestamps();
             $table->integer('rating');
             $table->morphs('rateable');
-            $table->bigInteger('user_id')->unsigned();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->index('rateable_id');
             $table->index('rateable_type');
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
