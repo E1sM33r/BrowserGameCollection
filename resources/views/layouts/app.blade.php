@@ -26,7 +26,8 @@
     </ul>
 
     <div class="w-3/12">
-        <form action="{{ route('results') }}" method="get">
+        <form action="{{ route('results') }}" method="post">
+            @CSRF
             <input type="text" placeholder="Suchen..." name="searchField" class="w-3/4 bg-gray-200 rounded-l-lg p-1">
             <button class="bg-gray-300 rounded-r-lg p-1" type="submit" value="search">
                 Suchen

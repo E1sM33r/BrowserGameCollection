@@ -3,7 +3,11 @@
 @section('content')
     <div class="flex justify-center">
         <div class="w-8/12 bg-white p-6 rounded-lg">
-            <p class="text-2xl font-medium py-2 px-4">Suchergebnisse</p>
+            <div>
+                <p class="text-2xl font-medium py-2 px-4">Suchergebnisse</p>
+
+            </div>
+
 
             @if ($games->count())
 

@@ -10,7 +10,17 @@
                 </div>
             @endif
 
-            <p class="text-2xl font-medium py-2 px-4">Meine Favoriten</p>
+            <div class="flex justify-between">
+                <p class="text-2xl font-medium py-2 px-4">Meine Favoriten</p>
+                <form action="{{ route('favorites') }}" method="get">
+                    <label for="orderBy">Sortieren nach: </label>
+                    <select name="order" id="orderBy" class="bg-gray-200 rounded" onchange="this.form.submit()">
+                        <option value="title" id="title">Name</option>
+                        <option value="averageRating" id="average">Bewertung</option>
+                        <option value="ratings" id="total">Anzahl Bewertungen</option>
+                    </select>
+                </form>
+            </div>
 
             @if ($games->count())
 
@@ -40,10 +50,11 @@
 
                 {{ $games->links() }}
             @else
-                    <p class="p-4 text-lg">Keine Favoriten gefunden</p>
+                <p class="p-4 text-lg">Keine Favoriten gefunden</p>
             @endif
         </div>
     </div>
 
     <script src="{{ mix('js/app.js') }}"></script>
+    <script> document.getElementById('{{ $selected }}').selected = 'selected' </script>
 @endsection

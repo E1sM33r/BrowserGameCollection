@@ -5,11 +5,26 @@ namespace App\Http\Controllers;
 use App\Models\Game;
 use App\Models\Like;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+
 
 class FavoritesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+
+        if ($request->order == 'ratings'){
+            $order = function ($game){return $game->usersRated();};
+            $selected = 'total';
+        }elseif ($request->order == 'averageRating'){
+            $order = function ($game){return $game->averageRating();};
+            $selected = 'average';
+        }else{
+            $order = 'title';
+            $selected = 'title';
+        }
+
+
         $likes = Like::where('user_id', auth()->user()->id)->get();
         $ids = [];
 
@@ -17,8 +32,12 @@ class FavoritesController extends Controller
             array_push($ids, $like->game_id);
         }
 
-        $games = Game::whereIn('id', $ids)->paginate(6);
+        $gamesList = Game::whereIn('id', $ids)->get();
 
-        return view('favorites.index', compact('games'));
+        $gamesList = $gamesList->sortByDesc($order);
+
+        $games = collect($gamesList)->paginate(6);
+
+        return view('favorites.index', compact('games', 'selected'));
     }
 }
