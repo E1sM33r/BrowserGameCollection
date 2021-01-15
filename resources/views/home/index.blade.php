@@ -27,9 +27,15 @@
 
                                     <img src="{{$game->gameImage()}}" class="w-11/12 py-1">
 
-                                    <div class="flex">
+                                    <div class="flex justify-between w-11/12">
+                                        <div class="flex items-center">
                                         <star-rating :rating="{{ round($game->averageRating(), 2) }}" :read-only="true" :increment="0.01" :star-size="30"></star-rating>
                                         <p class="p-2">({{$game->usersRated()}} Bewertungen)</p>
+                                        </div>
+                                        <div class="p-2 flex items-center">
+                                            <p class="px-2">{{ $game->likes->count() }} </p>
+                                            <span class="text-red-500 text-4xl">&hearts;</span>
+                                        </div>
                                     </div>
                                 </div>
                             </a>

@@ -33,11 +33,12 @@
                         </div>
                         @endauth
 
-                        <p class="px-2">{{round($game->averageRating(), 2)}}</p>
+                        <p class="px-2">&empty; {{round($game->averageRating(), 2)}}</p>
                         <p>({{$game->usersRated()}} Bewertungen)</p>
                     </div>
 
-
+                    <div class="flex items-center">
+                        <p class="px-2">({{ $game->likes->count() }} {{ Str::plural ('Like', $game->likes->count()) }})</p>
                     @auth()
                         @if(!$game->hasLiked(auth()->user()))
                             <form action="{{ route('game.like', $game) }}" method="post">
@@ -52,6 +53,7 @@
                             </form>
                         @endif
                     @endauth
+                    </div>
                 </div>
             </div>
 

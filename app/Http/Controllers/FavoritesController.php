@@ -19,6 +19,9 @@ class FavoritesController extends Controller
         }elseif ($request->order == 'averageRating'){
             $order = function ($game){return $game->averageRating();};
             $selected = 'average';
+        }elseif ($request->order == 'likes'){
+            $order = function ($game){return $game->likes->count();};
+            $selected = 'likes';
         }else{
             $order = 'title';
             $selected = 'title';
@@ -36,6 +39,8 @@ class FavoritesController extends Controller
 
         if ($request->order == 'ratings'){
             $gamesList = $gamesList->sortByDesc($order)->sortByDesc(function ($game){return $game->averageRating();});
+        }elseif($request->order == 'likes'){
+            $gamesList = $gamesList->sortByDesc(function ($game){return $game->averageRating();})->sortByDesc($order);
         }else{
             $gamesList = $gamesList->sortByDesc($order);
         }
