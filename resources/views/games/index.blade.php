@@ -13,6 +13,7 @@
                         <option value="likes" id="likes">Likes</option>
                         <option value="ratings" id="total">Anzahl Bewertungen</option>
                     </select>
+                    <input type="hidden" name="search" value="{{ $search }}">
                 </form>
             </div>
 
@@ -51,7 +52,7 @@
 
                 {{ $games->links() }}
             @else
-                Keine Ergebnisse gefunden
+                <p class="px-4">Keine Ergebnisse gefunden</p>
             @endif
         </div>
     </div>

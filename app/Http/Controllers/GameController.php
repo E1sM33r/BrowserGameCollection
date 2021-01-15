@@ -12,7 +12,9 @@ class GameController extends Controller
 {
     public function index(Request $request)
     {
-        $gamesList = Game::all();
+        $search = '%'.$request->search.'%';
+
+        $gamesList = Game::where('title', 'LIKE', $search)->get();
 
         if ($request->order == 'ratings'){
             $gamesList = $gamesList->sortByDesc(function ($game){return $game->usersRated().$game->averageRating();});
@@ -30,7 +32,9 @@ class GameController extends Controller
 
         $games = collect($gamesList)->paginate(6);
 
-        return view('games.index', compact('games', 'selected'));
+        $search = str_replace('%', '', $search);
+
+        return view('games.index', compact('games', 'selected', 'search'));
     }
 
     public  function show(Game $game)
