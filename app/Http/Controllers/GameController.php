@@ -17,13 +17,13 @@ class GameController extends Controller
         $gamesList = Game::where('title', 'LIKE', $search)->get();
 
         if ($request->order == 'ratings'){
-            $gamesList = $gamesList->sortByDesc(function ($game){return $game->usersRated().$game->averageRating();});
+            $gamesList = $gamesList->sortByDesc(function ($game){return $game->usersRated().$game->averageRating().$game->likes->count();});
             $selected = 'total';
         }elseif ($request->order == 'averageRating'){
             $gamesList = $gamesList->sortByDesc(function ($game){return $game->averageRating().$game->usersRated().$game->likes->count();});
             $selected = 'average';
         }elseif ($request->order == 'likes'){
-            $gamesList = $gamesList->sortByDesc(function ($game){return $game->likes->count().$game->averageRating();});
+            $gamesList = $gamesList->sortByDesc(function ($game){return $game->likes->count().$game->averageRating().$game->usersRated();});
             $selected = 'likes';
         }else{
             $gamesList = $gamesList->sortBy('title', SORT_NATURAL|SORT_FLAG_CASE);
