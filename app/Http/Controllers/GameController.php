@@ -10,11 +10,30 @@ use Intervention\Image\Facades\Image;
 
 class GameController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $games = Game::paginate(6);
+        if ($request->order == 'ratings'){
+            $order = function ($game){return $game->usersRated();};
+            $selected = 'total';
+        }elseif ($request->order == 'averageRating'){
+            $order = function ($game){return $game->averageRating();};
+            $selected = 'average';
+        }else{
+            $order = 'title';
+            $selected = 'title';
+        }
 
-        return view('games.index', compact('games'));
+        $gamesList = Game::all();
+
+        if ($request->order == 'ratings'){
+            $gamesList = $gamesList->sortByDesc($order)->sortByDesc(function ($game){return $game->averageRating();});
+        }else{
+            $gamesList = $gamesList->sortByDesc($order);
+        }
+
+        $games = collect($gamesList)->paginate(6);
+
+        return view('games.index', compact('games', 'selected'));
     }
 
     public  function show(Game $game)

@@ -3,9 +3,16 @@
 @section('content')
     <div class="flex justify-center">
         <div class="w-8/12 bg-white p-6 rounded-lg">
-            <div>
+            <div class="flex justify-between">
                 <p class="text-2xl font-medium py-2 px-4">Suchergebnisse</p>
-
+                <form action="{{ route('results') }}" method="get">
+                    <label for="orderBy">Sortieren nach: </label>
+                    <select name="order" id="orderBy" class="bg-gray-200 rounded" onchange="this.form.submit()">
+                        <option value="title" id="title">Name</option>
+                        <option value="averageRating" id="average">Bewertung</option>
+                        <option value="ratings" id="total">Anzahl Bewertungen</option>
+                    </select>
+                </form>
             </div>
 
 
@@ -43,4 +50,5 @@
     </div>
 
     <script src="{{ mix('js/app.js') }}"></script>
+    <script> document.getElementById('{{ $selected }}').selected = 'selected' </script>
 @endsection

@@ -58,7 +58,7 @@ Route::get('/highscores', function () {
 
 Route::get('/favorites', [FavoritesController::class, 'index'])->name('favorites');
 
-Route::post('/results', [GameController::class, 'index'])->name('results');
+Route::get('/results', [GameController::class, 'index'])->name('results');
 Route::post('/game', [GameController::class, 'store'])->name('game.store');
 Route::get('/game/create', [GameController::class, 'create'])->name('game.create');
 Route::get('/game/{game}', [GameController::class, 'show'])->name('game.show');
