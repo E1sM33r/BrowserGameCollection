@@ -12,26 +12,20 @@ class GameController extends Controller
 {
     public function index(Request $request)
     {
-        if ($request->order == 'ratings'){
-            $order = function ($game){return $game->usersRated();};
-            $selected = 'total';
-        }elseif ($request->order == 'averageRating'){
-            $order = function ($game){return $game->averageRating();};
-            $selected = 'average';
-        }elseif ($request->order == 'likes'){
-            $order = function ($game){return $game->likes->count();};
-            $selected = 'likes';
-        }else{
-            $order = 'title';
-            $selected = 'title';
-        }
-
         $gamesList = Game::all();
 
-        if($request->order == 'title'){
-            $gamesList = $gamesList->sortBy($order, SORT_NATURAL|SORT_FLAG_CASE);
+        if ($request->order == 'ratings'){
+            $gamesList = $gamesList->sortByDesc(function ($game){return $game->usersRated().$game->averageRating();});
+            $selected = 'total';
+        }elseif ($request->order == 'averageRating'){
+            $gamesList = $gamesList->sortByDesc(function ($game){return $game->averageRating().$game->usersRated();});
+            $selected = 'average';
+        }elseif ($request->order == 'likes'){
+            $gamesList = $gamesList->sortByDesc(function ($game){return $game->likes->count().$game->averageRating();});
+            $selected = 'likes';
         }else{
-            $gamesList = $gamesList->sortByDesc($order);
+            $gamesList = $gamesList->sortBy('title', SORT_NATURAL|SORT_FLAG_CASE);
+            $selected = 'title';
         }
 
         $games = collect($gamesList)->paginate(6);
