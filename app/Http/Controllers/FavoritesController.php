@@ -37,10 +37,8 @@ class FavoritesController extends Controller
 
         $gamesList = Game::whereIn('id', $ids)->get();
 
-        if ($request->order == 'ratings'){
-            $gamesList = $gamesList->sortByDesc($order)->sortByDesc(function ($game){return $game->averageRating();});
-        }elseif($request->order == 'likes'){
-            $gamesList = $gamesList->sortByDesc(function ($game){return $game->averageRating();})->sortByDesc($order);
+        if($request->order == 'title'){
+            $gamesList = $gamesList->sortBy($order, SORT_NATURAL|SORT_FLAG_CASE);
         }else{
             $gamesList = $gamesList->sortByDesc($order);
         }

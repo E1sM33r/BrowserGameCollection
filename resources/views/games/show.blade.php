@@ -24,35 +24,47 @@
                     <div class="flex items-center">
 
                         @auth()
-                        <div id="app">
-                            <star-rating @rating-selected ="setRating" :rating="{{ $game->userAverageRating ?? 0 }}" :show-rating="false" :star-size="30"></star-rating>
-                            <form action="{{ route('game.rate', $game) }}" method="post" id="ratingForm">
-                                @CSRF
-                                <input type="hidden" name="rating" id="rating" value="1">
-                            </form>
-                        </div>
+                            <div id="app">
+                                <star-rating @rating-selected ="setRating" :rating="{{ $game->userAverageRating ?? 0 }}" :show-rating="false" :star-size="30"></star-rating>
+                                <form action="{{ route('game.rate', $game) }}" method="post" id="ratingForm">
+                                    @CSRF
+                                    <input type="hidden" name="rating" id="rating" value="1">
+                                </form>
+                            </div>
+                            <p class="px-2">&empty; {{round($game->averageRating(), 2)}}</p>
+                            <p>({{$game->usersRated()}} Bewertungen)</p>
                         @endauth
+                        @guest()
+                            <div id="app" class="flex items-center">
+                                <star-rating :rating="{{ round($game->averageRating(), 2) }}" :read-only="true" :increment="0.01" :star-size="30"></star-rating>
+                                <p class="px-2">({{$game->usersRated()}} Bewertungen)</p>
+                            </div>
+                        @endguest
 
-                        <p class="px-2">&empty; {{round($game->averageRating(), 2)}}</p>
-                        <p>({{$game->usersRated()}} Bewertungen)</p>
                     </div>
 
                     <div class="flex items-center">
-                        <p class="px-2">({{ $game->likes->count() }} {{ Str::plural ('Like', $game->likes->count()) }})</p>
-                    @auth()
-                        @if(!$game->hasLiked(auth()->user()))
-                            <form action="{{ route('game.like', $game) }}" method="post">
-                                @CSRF
-                                <button type="submit" class="text-gray-500 text-4xl hover:text-red-500">&hearts;</button>
-                            </form>
-                        @else
-                            <form action="{{ route('game.like', $game) }}" method="post">
-                                @CSRF
-                                @method('DELETE')
-                                <button type="submit" class="text-red-500 text-4xl hover:text-gray-500">&hearts;</button>
-                            </form>
-                        @endif
-                    @endauth
+                        @auth()
+                            <p class="px-2">({{ $game->likes->count() }} {{ Str::plural ('Like', $game->likes->count()) }})</p>
+                            @if(!$game->hasLiked(auth()->user()))
+                                <form action="{{ route('game.like', $game) }}" method="post">
+                                    @CSRF
+                                    <button type="submit" class="text-gray-500 text-4xl hover:text-red-500">&hearts;</button>
+                                </form>
+                            @else
+                                <form action="{{ route('game.like', $game) }}" method="post">
+                                    @CSRF
+                                    @method('DELETE')
+                                    <button type="submit" class="text-red-500 text-4xl hover:text-gray-500">&hearts;</button>
+                                </form>
+                            @endif
+                        @endauth
+                        @guest()
+                            <div class="flex items-center">
+                                <p class="px-1">2</p>
+                                <span class="text-red-500 text-4xl">&hearts;</span>
+                            </div>
+                        @endguest
                     </div>
                 </div>
             </div>
