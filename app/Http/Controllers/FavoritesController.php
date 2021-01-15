@@ -24,7 +24,7 @@ class FavoritesController extends Controller
             $gamesList = $gamesList->sortByDesc(function ($game){return $game->usersRated().$game->averageRating();});
             $selected = 'total';
         }elseif ($request->order == 'averageRating'){
-            $gamesList = $gamesList->sortByDesc(function ($game){return $game->averageRating().$game->usersRated();});
+            $gamesList = $gamesList->sortByDesc(function ($game){return $game->averageRating().$game->usersRated().$game->likes->count();});
             $selected = 'average';
         }elseif ($request->order == 'likes'){
             $gamesList = $gamesList->sortByDesc(function ($game){return $game->likes->count().$game->averageRating();});
