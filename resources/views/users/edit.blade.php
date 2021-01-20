@@ -59,7 +59,7 @@
             </form>
             <div class="flex justify-between">
                 <button type="submit" form="updateUser" class="bg-blue-500 text-white px-4 py-2 mx-1 rounded font-medium w-1/2">Änderungen speichern</button>
-                <button type="button" class="bg-blue-500 text-white px-4 py-2 mx-1 rounded font-medium w-1/2"><a href="/account/{{$user->id}}/changepw">Passwort ändern</a></button>
+                <a href="/account/{{$user->id}}/changepw" class="bg-blue-500 text-white px-4 py-2 mx-1 rounded font-medium w-1/2 text-center">Passwort ändern</a>
             </div>
             <div class="flex justify-center">
                 <button type="button" class="bg-red-500 text-white px-4 py-2 rounded font-medium w-1/2 mt-2" @click={showDeleteModal=true}>Account löschen</button>
