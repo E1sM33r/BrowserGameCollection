@@ -86,6 +86,9 @@ class GameController extends Controller
             $imageArray ?? []
         ))->id;
 
+        $game = Game::find($id);
+        $game->attachTags($request->tags);
+
         return redirect()->route('game.show', $id);
     }
 

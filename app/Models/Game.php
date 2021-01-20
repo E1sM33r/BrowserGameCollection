@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Tags\HasTags;
 use willvincent\Rateable\Rateable;
 
 class Game extends Model
 {
     protected $guarded = [];
 
-    use HasFactory, Rateable;
+    use HasFactory, Rateable, HasTags;
 
     public function gameImage()
     {

@@ -11,6 +11,8 @@ class HomeController extends Controller
     {
         $games = Game::where('realGame', 'true')->paginate(6);
 
+        //$games = Game::withAllTags(['Jump&Run', 'Arcade', 'Shooter'])->paginate(5);
+
         return view('home.index', compact('games'));
     }
 }
