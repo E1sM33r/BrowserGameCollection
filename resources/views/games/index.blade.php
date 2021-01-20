@@ -14,6 +14,9 @@
                         <option value="ratings" id="total">Anzahl Bewertungen</option>
                     </select>
                     <input type="hidden" name="search" value="{{ $search }}">
+                    @foreach($tags as $tag)
+                        <input type="hidden" name="tags[]" value="{{ $tag }}">
+                    @endforeach
                 </form>
             </div>
 

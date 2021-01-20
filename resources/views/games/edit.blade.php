@@ -49,6 +49,17 @@
                     @enderror
                 </div>
 
+                <p class="font-medium">Tags</p>
+                <div class="mb-4 flex items-center">
+                    <label for="JumpnRun" class="pr-2">Jump&Run</label>
+                    <input type="checkbox" name="tags[0]" id="JumpnRun" class="bg-gray-100 border-2 p-4 rounded-lg" value="Jump&Run">
+                    <label for="Arcade" class="px-4">Arcade</label>
+                    <input type="checkbox" name="tags[1]" id="Arcade" class="bg-gray-100 border-2 p-4 rounded-lg" value="Arcade">
+                    <label for="Shooter" class="px-4">Shooter</label>
+                    <input type="checkbox" name="tags[2]" id="Shooter" class="bg-gray-100 border-2 p-4 rounded-lg" value="Shooter">
+                </div>
+
+                <p class="font-medium">Demo/Echtes Game</p>
                 <div class="mb-4 flex items-center">
                     <label for="demoGame" class="pr-2">Nur Demo</label>
                     <input type="radio" name="realGame" id="demoGame" class="bg-gray-100 border-2 p-4 rounded-lg" value="false" checked>

@@ -14,7 +14,11 @@ class GameController extends Controller
     {
         $search = '%'.$request->search.'%';
 
-        $gamesList = Game::where('title', 'LIKE', $search)->get();
+        if ($request->tags){
+            $gamesList = Game::withAnyTags($request->tags)->where('title', 'LIKE', $search)->get();
+        }else{
+            $gamesList = Game::where('title', 'LIKE', $search)->get();
+        }
 
         if ($request->order == 'ratings'){
             $gamesList = $gamesList->sortByDesc(function ($game){return $game->usersRated().$game->averageRating().$game->likes->count();});
@@ -34,7 +38,9 @@ class GameController extends Controller
 
         $search = str_replace('%', '', $search);
 
-        return view('games.index', compact('games', 'selected', 'search'));
+        $tags = $request->tags;
+
+        return view('games.index', compact('games', 'selected', 'search', 'tags'));
     }
 
     public  function show(Game $game)
@@ -125,6 +131,8 @@ class GameController extends Controller
             $data,
             $imageArray ?? [],
         ));
+
+        $game->syncTags(\request('tags'));
 
         return redirect()->route('game.show', $game->id);
     }
