@@ -4,8 +4,16 @@
     <div class="flex justify-center">
         <div class="w-4/12 bg-white p-6 rounded-lg">
 
-            <div class="text-2xl font-medium mb-4">
-                Spiel bearbeiten
+            <div class="flex justify-between">
+                <div class="text-2xl font-medium mb-4">
+                    Spiel bearbeiten
+                </div>
+
+                <a href="{{ route('game.show', $game->id) }}">
+                    <div class="bg-gray-200 rounded-lg p-1">
+                        Abbrechen
+                    </div>
+                </a>
             </div>
 
             <form action="{{ route('game.update', $game->id) }}" enctype="multipart/form-data" method="post">
@@ -51,21 +59,32 @@
 
                 <p class="font-medium">Tags</p>
                 <div class="mb-4 flex items-center">
-                    <label for="JumpnRun" class="pr-2">Jump&Run</label>
-                    <input type="checkbox" name="tags[0]" id="JumpnRun" class="bg-gray-100 border-2 p-4 rounded-lg" value="Jump&Run">
-                    <label for="Arcade" class="px-4">Arcade</label>
-                    <input type="checkbox" name="tags[1]" id="Arcade" class="bg-gray-100 border-2 p-4 rounded-lg" value="Arcade">
-                    <label for="Shooter" class="px-4">Shooter</label>
-                    <input type="checkbox" name="tags[2]" id="Shooter" class="bg-gray-100 border-2 p-4 rounded-lg" value="Shooter">
+                    @foreach($tags as $tag)
+                        <label for="{{$tag->name}}" class="px-3">{{$tag->name}}</label>
+                        <input type="checkbox" name="tags[]" id="{{$tag->name}}" class="bg-gray-100 border-2 p-4 rounded-lg" value="{{$tag->name}}"
+                               @foreach($game->tags as $gameTag)
+                               @if($gameTag->name == $tag->name)
+                               checked
+                            @endif
+                            @endforeach
+                        >
+                    @endforeach
                 </div>
+
 
                 <p class="font-medium">Demo/Echtes Game</p>
                 <div class="mb-4 flex items-center">
-                    <label for="demoGame" class="pr-2">Nur Demo</label>
-                    <input type="radio" name="realGame" id="demoGame" class="bg-gray-100 border-2 p-4 rounded-lg" value="false" checked>
-                    <label for="demoGame" class="px-4">Echtes Game</label>
-                    <input type="radio" name="realGame" id="realGame" class="bg-gray-100 border-2 p-4 rounded-lg" value="true">
-
+                    @if($game->realGame)
+                        <label for="demoGame" class="pr-2">Nur Demo</label>
+                        <input type="radio" name="realGame" id="demoGame" class="bg-gray-100 border-2 p-4 rounded-lg" value="false">
+                        <label for="demoGame" class="px-4">Echtes Game</label>
+                        <input type="radio" name="realGame" id="realGame" class="bg-gray-100 border-2 p-4 rounded-lg" value="true" checked>
+                    @else
+                        <label for="demoGame" class="pr-2">Nur Demo</label>
+                        <input type="radio" name="realGame" id="demoGame" class="bg-gray-100 border-2 p-4 rounded-lg" value="false" checked>
+                        <label for="demoGame" class="px-4">Echtes Game</label>
+                        <input type="radio" name="realGame" id="realGame" class="bg-gray-100 border-2 p-4 rounded-lg" value="true">
+                    @endif
                 </div>
 
                 <div class="mb-4">

@@ -7,6 +7,7 @@ use App\Models\Highscore;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
+use Spatie\Tags\Tag;
 
 class GameController extends Controller
 {
@@ -64,7 +65,9 @@ class GameController extends Controller
 
     public function edit(Game $game)
     {
-        return view('games.edit', compact('game'));
+        $tags = Tag::all();
+
+        return view('games.edit', compact('game', 'tags'));
     }
 
     public function store(Request $request)
