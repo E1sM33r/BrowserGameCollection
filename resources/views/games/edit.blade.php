@@ -57,18 +57,25 @@
                     @enderror
                 </div>
 
-                <p class="font-medium">Tags</p>
-                <div class="mb-4 flex items-center">
-                    @foreach($tags as $tag)
-                        <label for="{{$tag->name}}" class="px-3">{{$tag->name}}</label>
-                        <input type="checkbox" name="tags[]" id="{{$tag->name}}" class="bg-gray-100 border-2 p-4 rounded-lg" value="{{$tag->name}}"
-                               @foreach($game->tags as $gameTag)
-                               @if($gameTag->name == $tag->name)
-                               checked
-                            @endif
-                            @endforeach
-                        >
-                    @endforeach
+                <div>
+                    <p class="font-medium">Tags</p>
+                    <div class="mb-2 flex items-center @error('tags') border-2 rounded-lg border-red-500 @enderror">
+                        @foreach($tags as $tag)
+                            <label for="{{$tag->name}}" class="px-3">{{$tag->name}}</label>
+                            <input type="checkbox" name="tags[]" id="{{$tag->name}}" class="bg-gray-100 border-2 p-4 rounded-lg" value="{{$tag->name}}"
+                                   @foreach($game->tags as $gameTag)
+                                   @if($gameTag->name == $tag->name)
+                                   checked
+                                @endif
+                                @endforeach
+                            >
+                        @endforeach
+                    </div>
+                    @error('tags')
+                    <div class="text-red-500 text-sm mb-2">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
 
 

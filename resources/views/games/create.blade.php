@@ -49,14 +49,21 @@
                     @enderror
                 </div>
 
+                <div class="">
                 <p class="font-medium">Tags</p>
-                <div class="mb-4 flex items-center">
+                <div class="mb-2 flex items-center @error('tags') border-2 rounded-lg border-red-500 @enderror">
                     <label for="JumpnRun" class="pr-2">Jump&Run</label>
                     <input type="checkbox" name="tags[0]" id="JumpnRun" class="bg-gray-100 border-2 p-4 rounded-lg" value="Jump&Run">
                     <label for="Arcade" class="px-4">Arcade</label>
                     <input type="checkbox" name="tags[1]" id="Arcade" class="bg-gray-100 border-2 p-4 rounded-lg" value="Arcade">
                     <label for="Shooter" class="px-4">Shooter</label>
                     <input type="checkbox" name="tags[2]" id="Shooter" class="bg-gray-100 border-2 p-4 rounded-lg" value="Shooter">
+                </div>
+                @error('tags')
+                <div class="text-red-500 text-sm mb-2">
+                    {{ $message }}
+                </div>
+                @enderror
                 </div>
 
                 <p class="font-medium">Demo/Echtes Game</p>

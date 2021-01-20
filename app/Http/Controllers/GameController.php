@@ -78,6 +78,7 @@ class GameController extends Controller
             'description' => 'required',
             'image' => 'image',
             'realGame' => '',
+            'tags' => 'required',
         ]);
 
         if (request('image')) {
@@ -110,6 +111,7 @@ class GameController extends Controller
                 'description' => 'required',
                 'image' => 'image',
                 'realGame' => '',
+                'tags' => 'required',
             ]);
         }else {
             $data = request()->validate([
@@ -118,6 +120,7 @@ class GameController extends Controller
                 'description' => 'required',
                 'image' => 'image',
                 'realGame' => '',
+                'tags' => 'required',
             ]);
         }
 
