@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="47cc0b8b-af5a-48ab-b8ac-b1f0818f9d52" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HighscoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HighscoreController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/de/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/de/validation.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +163,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="E:/Ordner/42licious" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/lang/de" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -179,6 +178,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\BrowserGameCollection\resources\lang\de" />
       <recent name="D:\BrowserGameCollection\storage\app\public\games" />
       <recent name="D:\BrowserGameCollection\storage\app\public\profile" />
       <recent name="D:\WFR\BrowserGameCollection\resources\views\games" />
@@ -240,7 +240,7 @@
       <workItem from="1610721879803" duration="5345000" />
       <workItem from="1611071463372" duration="253000" />
       <workItem from="1611145638202" duration="7797000" />
-      <workItem from="1611227403840" duration="8190000" />
+      <workItem from="1611227403840" duration="9215000" />
     </task>
     <servers />
   </component>
