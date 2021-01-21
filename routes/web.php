@@ -52,9 +52,8 @@ Route::get('/profile/{user}', [ProfilesController::class, 'show'])->name('profil
 Route::get('/profile/{user}/edit', [ProfilesController::class, 'edit'])->name('profiles.edit');
 Route::patch('/profile/{user}', [ProfilesController::class, 'update'])->name('profiles.update');
 
-Route::get('/highscores', function () {
-    return view('highscores.index');
-})->name('highscores');
+Route::get('/highscores', [HighscoreController::class, 'index'])->name('highscores');
+Route::get('/highscores/{game}', [HighscoreController::class, 'index'])->name('highscores.game');
 
 Route::get('/favorites', [FavoritesController::class, 'index'])->name('favorites');
 

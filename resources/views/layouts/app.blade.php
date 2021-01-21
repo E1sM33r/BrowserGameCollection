@@ -57,7 +57,7 @@
         @endguest
     </ul>
 
-    <!-- Account delete confirmation modal -->
+    <!-- Extended Search modal -->
     <div x-show="showSearchModal" tabindex="0"
          class="z-40 overflow-auto left-0 top-0 bottom-0 right-0 w-full h-full fixed">
         <div @click.away="showSearchModal = false" class="z-50 relative p-3 mx-auto my-0 max-w-full"
