@@ -34,7 +34,11 @@
             <div class="flex justify-between p-3">
 
                 <div class="w-1/4 bg-white p-3">
+                    @if($user->profile->image == 'default')
+                        <img src="{{asset('images/defaultImages/ProfileDefault.png')}}" class="shadow rounded-full max-w-full h-auto align-middle border-none">
+                    @else
                     <img src="/storage/{{ $user->profile->image }}" class="shadow rounded-full max-w-full h-auto align-middle border-none">
+                    @endif
                 </div>
                 <div class="w-3/4 bg-gray-100 shadow rounded-lg p-3 flex flex-col justify-between">
                     <div class="flex justify-between">

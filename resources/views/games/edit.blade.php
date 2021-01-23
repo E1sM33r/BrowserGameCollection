@@ -57,21 +57,46 @@
                     @enderror
                 </div>
 
-                <div>
+                <div class="">
                     <p class="font-medium">Tags</p>
-                    <div class="mb-2 flex items-center @error('tags') border-2 rounded-lg border-red-500 @enderror">
-                        @foreach($tags as $tag)
-                            <label for="{{$tag->name}}" class="px-3">{{$tag->name}}</label>
-                            <input type="checkbox" name="tags[]" id="{{$tag->name}}" class="bg-gray-100 border-2 p-4 rounded-lg" value="{{$tag->name}}"
-                                   @foreach($game->tags as $gameTag)
-                                   @if($gameTag->name == $tag->name)
-                                   checked
-                                @endif
-                                @endforeach
-                            >
-                        @endforeach
+
+                    <p class="underline">Genre</p>
+                    <div class="mb-2 flex items-center @error('tagsGenre') border-2 rounded-lg border-red-500 @enderror">
+                        <label for="JumpnRun" class="pr-2">Jump&Run</label>
+                        <input type="checkbox" name="tagsGenre[0]" id="JumpnRun" class="bg-gray-100 border-2 p-4 rounded-lg" value="Jump&Run">
+                        <label for="Arcade" class="px-4">Arcade</label>
+                        <input type="checkbox" name="tagsGenre[1]" id="Arcade" class="bg-gray-100 border-2 p-4 rounded-lg" value="Arcade">
+                        <label for="Shooter" class="px-4">Shooter</label>
+                        <input type="checkbox" name="tagsGenre[2]" id="Shooter" class="bg-gray-100 border-2 p-4 rounded-lg" value="Shooter">
                     </div>
-                    @error('tags')
+                    @error('tagsGenre')
+                    <div class="text-red-500 text-sm mb-2">
+                        {{ $message }}
+                    </div>
+                    @enderror
+
+                    <p class="underline">Steuerung</p>
+                    <div class="mb-2 flex items-center @error('tagsControl') border-2 rounded-lg border-red-500 @enderror">
+                        <label for="Tastatur" class="pr-2">Tastatur</label>
+                        <input type="checkbox" name="tagsControl[0]" id="Tastatur" class="bg-gray-100 border-2 p-4 rounded-lg" value="Tastatur">
+                        <label for="Maus" class="px-2">Maus</label>
+                        <input type="checkbox" name="tagsControl[1]" id="Maus" class="bg-gray-100 border-2 p-4 rounded-lg" value="Maus">
+                    </div>
+                    @error('tagsControl')
+                    <div class="text-red-500 text-sm mb-2">
+                        {{ $message }}
+                    </div>
+                    @enderror
+
+                    <p class="underline">Highscore Typ</p>
+                    <div class="mb-2 flex items-center @error('tagsType') border-2 rounded-lg border-red-500 @enderror">
+                        <label for="Endlos" class="pr-2">Endlos</label>
+                        <input type="radio" name="tagsType[0]" id="Endlos" class="bg-gray-100 border-2 p-4 rounded-lg" value="Endlos">
+                        <label for="Zeitbegrenzt" class="px-2">Zeitbegrenzt</label>
+                        <input type="radio" name="tagsType[1]" id="Zeitbegrenzt" class="bg-gray-100 border-2 p-4 rounded-lg" value="Zeitbegrenzt">
+                    </div>
+
+                    @error('tagsType')
                     <div class="text-red-500 text-sm mb-2">
                         {{ $message }}
                     </div>
@@ -81,7 +106,7 @@
 
                 <p class="font-medium">Demo/Echtes Game</p>
                 <div class="mb-4 flex items-center">
-                    @if($game->realGame)
+                    @if($game->realGame == 'true')
                         <label for="demoGame" class="pr-2">Nur Demo</label>
                         <input type="radio" name="realGame" id="demoGame" class="bg-gray-100 border-2 p-4 rounded-lg" value="false">
                         <label for="demoGame" class="px-4">Echtes Game</label>

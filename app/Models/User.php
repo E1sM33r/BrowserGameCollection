@@ -50,7 +50,7 @@ class User extends Authenticatable
         static::created(function($user) {
             $user->profile()->create([
                 'description' => "Keine Beschreibung vorhanden...",
-                'image' => '/profile/default/90FudTwfyrxMl6BJkTdqqxN3E9qK6yHnUq7P7YlU.png',
+                'image' => 'default',
             ]);
         });
     }

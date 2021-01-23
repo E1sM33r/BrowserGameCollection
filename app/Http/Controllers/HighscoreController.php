@@ -12,8 +12,7 @@ class HighscoreController extends Controller
     public function index(Game $game)
     {
         $games = Game::all();
-
-        //$highscores = Highscore::where('game_id', $game->id)->orderByDesc('score')->orderBy('updated_at')->paginate(1);
+        $games = $games->sortBy('title', SORT_NATURAL|SORT_FLAG_CASE);
 
         $highscoresData = DB::select( DB::raw("SELECT *, RANK() OVER (ORDER BY score DESC, updated_at) rank FROM highscores WHERE game_id = :gameid GROUP BY id, user_id, game_id, score, created_at, updated_at ORDER BY rank"), array(
             'gameid' => $game->id,

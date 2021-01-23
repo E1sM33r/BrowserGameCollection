@@ -15,9 +15,13 @@ class Game extends Model
 
     public function gameImage()
     {
-        $imagePath = ($this->image) ? $this->image : '/games/default/ldm9dHF0JwNjLIIYhdb3v4zgv0nLCeHSBcuzQuEC.jpg';
+        $imagePath = ($this->image) ? $this->image : 'default';
 
-        return '/storage/' . $imagePath;
+        if ($imagePath == 'default'){
+            return '/images/defaultImages/GameDefault.png';
+        }else{
+            return '/storage/' . $imagePath;
+        }
     }
 
     public function hasHighscore(User $user)

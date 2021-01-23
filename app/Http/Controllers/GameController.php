@@ -15,8 +15,42 @@ class GameController extends Controller
     {
         $search = '%'.$request->search.'%';
 
-        if ($request->tags){
-            $gamesList = Game::withAnyTags($request->tags)->where('title', 'LIKE', $search)->get();
+        if ($request->tagsGenre || $request->tagsControl || $request->tagsType){
+            $gamesList = collect([]);
+            if ($request->tagsGenre){
+                $gamesListGenre = Game::withAnyTags($request->tagsGenre)->where('title', 'LIKE', $search)->get();
+                $gamesList = $gamesListGenre;
+            }
+            if ($request->tagsControl){
+                $gamesListControl = Game::withAnyTags($request->tagsControl)->where('title', 'LIKE', $search)->get();
+                if ($gamesList->count() == 0){
+                    $gamesList = $gamesListControl;
+                }else{
+                    $gamesFiltered = collect();
+                    $gamesListDiff = $gamesList->diff($gamesListControl);
+                    foreach ($gamesList as $game){
+                        if (!$gamesListDiff->contains($game)){
+                            $gamesFiltered->push($game);
+                        }
+                    }
+                    $gamesList = $gamesFiltered;
+                }
+            }
+            if ($request->tagsType){
+                $gamesListType = Game::withAnyTags($request->tagsType)->where('title', 'LIKE', $search)->get();
+                if ($gamesList->count() == 0){
+                    $gamesList = $gamesListType;
+                }else{
+                    $gamesFiltered = collect();
+                    $gamesListDiff = $gamesList->diff($gamesListType);
+                    foreach ($gamesList as $game){
+                        if (!$gamesListDiff->contains($game)){
+                            $gamesFiltered->push($game);
+                        }
+                    }
+                    $gamesList = $gamesFiltered;
+                }
+            }
         }else{
             $gamesList = Game::where('title', 'LIKE', $search)->get();
         }
@@ -39,9 +73,11 @@ class GameController extends Controller
 
         $search = str_replace('%', '', $search);
 
-        $tags = $request->tags;
+        $tagsGenre = $request->tagsGenre;
+        $tagsControl = $request->tagsControl;
+        $tagsType = $request->tagsType;
 
-        return view('games.index', compact('games', 'selected', 'search', 'tags'));
+        return view('games.index', compact('games', 'selected', 'search', 'tagsGenre', 'tagsControl', 'tagsType'));
     }
 
     public  function show(Game $game)
@@ -78,7 +114,9 @@ class GameController extends Controller
             'description' => 'required',
             'image' => 'image',
             'realGame' => '',
-            'tags' => 'required',
+            'tagsGenre' => 'required',
+            'tagsControl' => 'required',
+            'tagsType' => 'required',
         ]);
 
         if (request('image')) {
@@ -88,16 +126,19 @@ class GameController extends Controller
             $image->save();
 
             $imageArray = ['image' => $imagePath];
+            $data = array_slice($data, 0, 5);
+        }else{
+            $data = array_slice($data, 0, 4);
         }
-
 
         $id = Game::create(array_merge(
             $data,
             $imageArray ?? []
         ))->id;
 
+        $tags = array_merge($request->tagsGenre,$request->tagsControl, $request->tagsType);
         $game = Game::find($id);
-        $game->attachTags($request->tags);
+        $game->attachTags($tags);
 
         return redirect()->route('game.show', $id);
     }
@@ -111,7 +152,9 @@ class GameController extends Controller
                 'description' => 'required',
                 'image' => 'image',
                 'realGame' => '',
-                'tags' => 'required',
+                'tagsGenre' => 'required',
+                'tagsControl' => 'required',
+                'tagsType' => 'required',
             ]);
         }else {
             $data = request()->validate([
@@ -120,7 +163,9 @@ class GameController extends Controller
                 'description' => 'required',
                 'image' => 'image',
                 'realGame' => '',
-                'tags' => 'required',
+                'tagsGenre' => 'required',
+                'tagsControl' => 'required',
+                'tagsType' => 'required',
             ]);
         }
 
@@ -131,6 +176,9 @@ class GameController extends Controller
             $image->save();
 
             $imageArray = ['image' => $imagePath];
+            $data = array_slice($data, 0, 5);
+        }else{
+            $data = array_slice($data, 0, 4);
         }
 
         $game->update(array_merge(
@@ -138,7 +186,8 @@ class GameController extends Controller
             $imageArray ?? [],
         ));
 
-        $game->syncTags(\request('tags'));
+        $tags = array_merge(\request('tagsGenre'), \request('tagsControl'), \request('tagsType'));
+        $game->syncTags($tags);
 
         return redirect()->route('game.show', $game->id);
     }

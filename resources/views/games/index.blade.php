@@ -14,10 +14,20 @@
                         <option value="ratings" id="total">Anzahl Bewertungen</option>
                     </select>
                     <input type="hidden" name="search" value="{{ $search }}">
-                    @if($tags != 0)
-                    @foreach($tags as $tag)
-                        <input type="hidden" name="tags[]" value="{{ $tag }}">
-                    @endforeach
+                    @if($tagsGenre != 0)
+                        @foreach($tagsGenre as $tag)
+                            <input type="hidden" name="tagsGenre[]" value="{{ $tag }}">
+                        @endforeach
+                    @endif
+                    @if($tagsControl != 0)
+                        @foreach($tagsControl as $tag)
+                            <input type="hidden" name="tagsControl[]" value="{{ $tag }}">
+                        @endforeach
+                    @endif
+                    @if($tagsType != 0)
+                        @foreach($tagsType as $tag)
+                            <input type="hidden" name="tagsType[]" value="{{ $tag }}">
+                        @endforeach
                     @endif
                 </form>
             </div>

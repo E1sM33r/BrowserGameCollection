@@ -69,14 +69,28 @@
                     <form action="{{ route('results') }}" method="get" id="extendedSearch" class="pt-4">
                         <input type="text" placeholder="Suchenbegriff eingeben..." name="search" class="w-10/12 rounded-lg bg-gray-200 p-1">
                         <p class="font-medium pt-4">Tags</p>
+
+                        <p class="underline">Genre</p>
                         <div>
                             <label for="JumpnRun" class="pr-2">Jump&Run</label>
-                            <input type="checkbox" name="tags[0]" id="JumpnRun" class="bg-gray-100 border-2 p-4 rounded-lg" value="Jump&Run">
+                            <input type="checkbox" name="tagsGenre[]" id="JumpnRun" class="bg-gray-100 border-2 p-4 rounded-lg" value="Jump&Run">
                             <label for="Arcade" class="px-4">Arcade</label>
-                            <input type="checkbox" name="tags[1]" id="Arcade" class="bg-gray-100 border-2 p-4 rounded-lg" value="Arcade">
+                            <input type="checkbox" name="tagsGenre[]" id="Arcade" class="bg-gray-100 border-2 p-4 rounded-lg" value="Arcade">
                             <label for="Shooter" class="px-4">Shooter</label>
-                            <input type="checkbox" name="tags[2]" id="Shooter" class="bg-gray-100 border-2 p-4 rounded-lg" value="Shooter">
+                            <input type="checkbox" name="tagsGenre[]" id="Shooter" class="bg-gray-100 border-2 p-4 rounded-lg" value="Shooter">
                         </div>
+
+                        <p class="underline">Steuerung</p>
+                        <label for="Tastatur" class="pr-2">Tastatur</label>
+                        <input type="checkbox" name="tagsControl[0]" id="Tastatur" class="bg-gray-100 border-2 p-4 rounded-lg" value="Tastatur">
+                        <label for="Maus" class="pr-2">Maus</label>
+                        <input type="checkbox" name="tagsControl[1]" id="Maus" class="bg-gray-100 border-2 p-4 rounded-lg" value="Maus">
+
+                        <p class="underline">Highscore Typ</p>
+                        <label for="Endlos" class="pr-2">Endlos</label>
+                        <input type="checkbox" name="tagsType[0]" id="Endlos" class="bg-gray-100 border-2 p-4 rounded-lg" value="Endlos">
+                        <label for="Zeitbegrenzt" class="pr-2">Zeitbegrenzt</label>
+                        <input type="checkbox" name="tagsType[1]" id="Zeitbegrenzt" class="bg-gray-100 border-2 p-4 rounded-lg" value="Zeitbegrenzt">
                     </form>
 
                 </div>
