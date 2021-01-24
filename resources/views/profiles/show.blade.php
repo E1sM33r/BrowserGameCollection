@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex justify-center">
-        <div class="w-8/12 bg-white p-6 rounded-lg">
+        <div class="w-8/12 bg-gray-200 p-6 rounded-lg">
 
             @if (session('status'))
                 <div class="bg-blue-500 p-4 rounded-lg mb-6 text-white text-center">
@@ -18,12 +18,12 @@
                 @can('update', $user->profile)
                     <div>
                         <a href="/account/{{$user->id}}/edit">
-                            <div class="bg-gray-200 rounded-lg p-1 m-1">
+                            <div class="bg-blue-500 rounded-lg p-1 m-1 hover:bg-blue-600 text-white">
                                 Account bearbeiten
                             </div>
                         </a>
                         <a href="/profile/{{$user->id}}/edit">
-                            <div class="bg-gray-200 rounded-lg p-1 m-1 text-center">
+                            <div class="bg-blue-500 rounded-lg p-1 m-1 text-center hover:bg-blue-600 text-white">
                                 Profil bearbeiten
                             </div>
                         </a>
@@ -33,14 +33,14 @@
 
             <div class="flex justify-between p-3">
 
-                <div class="w-1/4 bg-white p-3">
+                <div class="w-1/4 bg-gray-200 p-3">
                     @if($user->profile->image == 'default')
                         <img src="{{asset('images/defaultImages/ProfileDefault.png')}}" class="shadow rounded-full max-w-full h-auto align-middle border-none">
                     @else
                     <img src="/storage/{{ $user->profile->image }}" class="shadow rounded-full max-w-full h-auto align-middle border-none">
                     @endif
                 </div>
-                <div class="w-3/4 bg-gray-100 shadow rounded-lg p-3 flex flex-col justify-between">
+                <div class="w-3/4 bg-gray-50 shadow rounded-lg p-3 flex flex-col justify-between">
                     <div class="flex justify-between">
                         <div class="w-1/2">
                             <div class="text-lg px-3">

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex justify-center">
-        <div class="w-4/12 bg-white p-6 rounded-lg">
+        <div class="w-4/12 bg-gray-200 p-6 rounded-lg">
 
             <div class="text-2xl font-medium mb-4">
                 Spiel hinzufügen
@@ -14,7 +14,7 @@
 
                 <div class="mb-4">
                     <label for="title" class="font-medium">Titel</label>
-                    <input type="text" name="title" id="title" placeholder="Titel" class="bg-gray-100 border-2 w-full p-4 rounded-lg
+                    <input type="text" name="title" id="title" placeholder="Titel" class="bg-white border-2 w-full p-4 rounded-lg
                 @error('title') border-red-500 @enderror" value="{{ old('title') }}">
 
                     @error('title')
@@ -26,7 +26,7 @@
 
                 <div class="mb-4">
                     <label for="developer" class="font-medium">Entwickler</label>
-                    <input type="text" name="developer" id="developer" placeholder="Entwickler" class="bg-gray-100 border-2 w-full p-4 rounded-lg
+                    <input type="text" name="developer" id="developer" placeholder="Entwickler" class="bg-white border-2 w-full p-4 rounded-lg
                 @error('developer') border-red-500 @enderror" value="{{ old('developer') }}">
 
                     @error('developer')
@@ -39,7 +39,7 @@
                 <div class="mb-4">
                     <label for="description" class="mb-2 font-medium">Beschreibung</label>
                     <textarea name="description" id="description" placeholder="Beschreibung..." maxlength="1200"
-                              class="bg-gray-100 border-2 w-full p-4 rounded-lg h-80 resize-none
+                              class="bg-white border-2 w-full p-4 rounded-lg h-80 resize-none
                 @error('description') border-red-500 @enderror">{{ old('description')}}</textarea>
 
                     @error('description')
@@ -83,9 +83,9 @@
                     <p class="underline">Highscore Typ</p>
                     <div class="mb-2 flex items-center @error('tagsType') border-2 rounded-lg border-red-500 @enderror">
                         <label for="Endlos" class="pr-2">Endlos</label>
-                        <input type="radio" name="tagsType[0]" id="Endlos" class="bg-gray-100 border-2 p-4 rounded-lg" value="Endlos">
+                        <input type="radio" name="tagsType[]" id="Endlos" class="bg-gray-100 border-2 p-4 rounded-lg" value="Endlos">
                         <label for="Zeitbegrenzt" class="px-2">Zeitbegrenzt</label>
-                        <input type="radio" name="tagsType[1]" id="Zeitbegrenzt" class="bg-gray-100 border-2 p-4 rounded-lg" value="Zeitbegrenzt">
+                        <input type="radio" name="tagsType[]" id="Zeitbegrenzt" class="bg-gray-100 border-2 p-4 rounded-lg" value="Zeitbegrenzt">
                     </div>
 
                     @error('tagsType')
@@ -116,7 +116,7 @@
                 </div>
 
                 <div>
-                    <button type="submit" class="bg-blue-500 text-white px-4 py-3 rounded font-medium w-full">Spiel hinzufügen</button>
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-3 rounded font-medium w-full hover:bg-blue-600">Spiel hinzufügen</button>
                 </div>
             </form>
         </div>

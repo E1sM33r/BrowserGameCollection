@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex justify-center">
-        <div class="w-8/12 bg-white p-6 rounded-lg">
+        <div class="w-8/12 bg-gray-200 p-6 rounded-lg">
 
             <div class="py-2">
                 <span class="font-medium text-4xl">{{ $game->title }}</span><br/>
@@ -69,7 +69,7 @@
                 </div>
             </div>
 
-            <hr>
+            <hr class="border-gray-500">
 
             <div class="py-2">
                 <span class="font-medium text-xl" id="test">Beschreibung</span>
@@ -78,33 +78,35 @@
                 </div>
             </div>
 
-            <hr>
+            <hr class="border-gray-500">
+
             <div class="py-2">
                 <span class="font-medium text-xl">Highscores</span>
                 <div class="flex flex-col items-center">
                     <table class="w-1/2 table-fixed border-collapse">
                         <tr>
-                            <th class="w-1/6 bg-gray-100 border border-black">Position</th>
-                            <th class="w-1/2 bg-gray-200 border border-black">Nickname</th>
-                            <th class="w-1/6 bg-gray-100 border border-black">Score</th>
-                            <th class="w-2/6 bg-gray-200 border border-black">Wann</th>
+                            <th class="w-1/6 bg-white border border-black">Position</th>
+                            <th class="w-1/2 bg-gray-50 border border-black">Nickname</th>
+                            <th class="w-1/6 bg-white border border-black">Score</th>
+                            <th class="w-2/6 bg-gray-50 border border-black">Wann</th>
                         </tr>
                         @if($highscores->count()==0)
                             <tr>
-                                <td colspan="4" class="text-center bg-gray-100 border border-black">Keine Highscores vorhanden</td>
+                                <td colspan="4" class="text-center bg-white border border-black">Keine Highscores vorhanden</td>
                             </tr>
                         @else
                             @for($i = 0; $i<$highscores->count(); $i++)
                                 <tr>
-                                    <td class="bg-gray-100 text-center border border-black">{{ $highscores[$i]->rank }}</td>
-                                    <td class="bg-gray-200 text-center border border-black"><a href="{{ route('profiles.show', $highscores[$i]->user->username) }}">{{ $highscores[$i]->user->username }}</a></td>
-                                    <td class="bg-gray-100 text-center border border-black">{{ $highscores[$i]->score }}</td>
-                                    <td class="bg-gray-200 text-center border border-black">{{ $highscores[$i]->updated_at->format('d.m.Y - H:i') }}</td>
+                                    <td class="bg-white text-center border border-black">{{ $highscores[$i]->rank }}</td>
+                                    <td class="bg-gray-50 text-center border border-black"><a href="{{ route('profiles.show', $highscores[$i]->user->username) }}" class="hover:text-gray-400">{{ $highscores[$i]->user->username }}</a></td>
+                                    <td class="bg-white text-center border border-black">{{ $highscores[$i]->score }}</td>
+                                    <td class="bg-gray-50 text-center border border-black">{{ $highscores[$i]->updated_at->format('d.m.Y - H:i') }}</td>
                                 </tr>
                             @endfor
                         @endif
 
                     </table>
+                    <a href="{{ route('highscores.game', $game->id) }}" class="bg-blue-500 hover:bg-blue-600 text-white p-1 m-4 rounded">Alle Highscores anzeigen</a>
 
                 </div>
             </div>

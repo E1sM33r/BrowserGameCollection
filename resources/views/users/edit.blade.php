@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex justify-center">
-        <div class="w-4/12 bg-white p-6 rounded-lg" x-data="{showDeleteModal:false}" x-bind:class="{ 'model-open': showDeleteModal }">
+        <div class="w-4/12 bg-gray-200 p-6 rounded-lg" x-data="{showDeleteModal:false}" x-bind:class="{ 'model-open': showDeleteModal }">
 
             <div class="flex justify-between">
                 <div class="text-2xl font-medium mb-4">
@@ -10,7 +10,7 @@
                 </div>
 
                 <a href="{{ route('profiles.show', $user->username) }}">
-                    <div class="bg-gray-200 rounded-lg p-1">
+                    <div class="bg-blue-500 rounded-lg p-1 hover:bg-blue-600 text-white">
                         Abbrechen
                     </div>
                 </a>
@@ -22,7 +22,7 @@
 
                 <div class="mb-4">
                     <label for="name" class="">Name:</label>
-                    <input type="text" name="name" id="name" placeholder="Your name" class="bg-gray-100 border-2 w-full p-4 rounded-lg
+                    <input type="text" name="name" id="name" placeholder="Your name" class="bg-white border-2 w-full p-4 rounded-lg
                 @error('name') border-red-500 @enderror" value="{{ old('name') ?? $user->name }}">
 
                     @error('name')
@@ -34,7 +34,7 @@
 
                 <div class="mb-4">
                     <label for="username" class="">Username:</label>
-                    <input type="text" name="username" id="username" placeholder="Username" class="bg-gray-100 border-2 w-full p-4 rounded-lg
+                    <input type="text" name="username" id="username" placeholder="Username" class="bg-white border-2 w-full p-4 rounded-lg
                 @error('username') border-red-500 @enderror" value="{{ old('username') ?? $user->username }}">
 
                     @error('username')
@@ -46,7 +46,7 @@
 
                 <div class="mb-4">
                     <label for="email" class="">Email:</label>
-                    <input type="text" name="email" id="email" placeholder="Your email" class="bg-gray-100 border-2 w-full p-4 rounded-lg
+                    <input type="text" name="email" id="email" placeholder="Your email" class="bg-white border-2 w-full p-4 rounded-lg
                 @error('email') border-red-500 @enderror" value="{{ old('email') ?? $user->email }}">
 
                     @error('email')
@@ -58,11 +58,11 @@
 
             </form>
             <div class="flex justify-between">
-                <button type="submit" form="updateUser" class="bg-blue-500 text-white px-4 py-2 mx-1 rounded font-medium w-1/2">Änderungen speichern</button>
-                <a href="/account/{{$user->id}}/changepw" class="bg-blue-500 text-white px-4 py-2 mx-1 rounded font-medium w-1/2 text-center">Passwort ändern</a>
+                <button type="submit" form="updateUser" class="bg-blue-500 text-white px-4 py-2 mx-1 rounded font-medium w-1/2 hover:bg-blue-600">Änderungen speichern</button>
+                <a href="/account/{{$user->id}}/changepw" class="bg-blue-500 text-white px-4 py-2 mx-1 rounded font-medium w-1/2 text-center hover:bg-blue-600">Passwort ändern</a>
             </div>
             <div class="flex justify-center">
-                <button type="button" class="bg-red-500 text-white px-4 py-2 rounded font-medium w-1/2 mt-2" @click={showDeleteModal=true}>Account löschen</button>
+                <button type="button" class="bg-red-500 text-white px-4 py-2 rounded font-medium w-1/2 mt-2 hover:bg-red-600" @click={showDeleteModal=true}>Account löschen</button>
             </div>
 
             <form action="{{route('user.delete', $user)}}" method="post" id="deleteUser">

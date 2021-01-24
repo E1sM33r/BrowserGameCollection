@@ -9,18 +9,18 @@
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.50.0/dist/phaser-arcade-physics.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </head>
-<body class="bg-gray-200">
-<nav class="p-6 bg-white flex justify-between mb-6" x-data="{showSearchModal:false}" x-bind:class="{ 'model-open': showSearchModal }">
+<body class="bg-gray-500">
+<nav class="p-6 bg-gray-700 flex justify-between mb-6" x-data="{showSearchModal:false}" x-bind:class="{ 'model-open': showSearchModal }">
     <ul class="flex items-center">
         <li>
-            <a href="{{ route('home') }}" class="p-1 m-2 bg-gray-200 rounded">Home</a>
+            <a href="{{ route('home') }}" class="p-1 m-2 bg-blue-600 hover:bg-blue-700 text-white hover:text-white rounded">Home</a>
         </li>
         <li>
-            <a href="{{ route('highscores') }}" class="p-1 m-2 bg-gray-200 rounded">Highscores</a>
+            <a href="{{ route('highscores') }}" class="p-1 m-2 bg-blue-600 hover:bg-blue-700 text-white hover:text-white rounded">Highscores</a>
         </li>
         @auth
         <li>
-            <a href="{{ route('favorites') }}" class="p-1 m-2 bg-gray-200 rounded">Favoriten</a>
+            <a href="{{ route('favorites') }}" class="p-1 m-2 bg-blue-600 hover:bg-blue-700 text-white hover:text-white rounded">Favoriten</a>
         </li>
         @endauth
     </ul>
@@ -28,31 +28,31 @@
     <div class="w-3/12">
         <form action="{{ route('results') }}" method="get">
             @CSRF
-            <button class="bg-gray-300 rounded-l-lg p-1" type="button" value="search" @click={showSearchModal=true}>V</button>
+            <button class="bg-gray-400 hover:bg-gray-500 text-white hover:text-white rounded-l-lg p-1" type="button" value="search" @click={showSearchModal=true}>V</button>
             <input type="text" placeholder="Suchen..." name="search" class="w-3/4 bg-gray-200 p-1">
-            <button class="bg-gray-300 rounded-r-lg p-1" type="submit" value="search">Suchen</button>
+            <button class="bg-gray-400 hover:bg-gray-500 text-white hover:text-white rounded-r-lg p-1" type="submit" value="search">Suchen</button>
         </form>
     </div>
 
     <ul class="flex items-center">
         @auth
             <li>
-                <a href="{{ route('profiles.show', auth()->user()->username) }}" class="p-1 m-2 bg-gray-200 rounded">{{auth()->user()->username}}</a>
+                <a href="{{ route('profiles.show', auth()->user()->username) }}" class="p-1 m-2 bg-blue-600 hover:bg-blue-700 text-white hover:text-white rounded">{{auth()->user()->username}}</a>
             </li>
             <li>
                 <form action="{{ route('logout') }}" method="post" class="m-2 inline">
                     @csrf
-                    <button type="submit" class="bg-gray-200 rounded p-1">Logout</button>
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white hover:text-white rounded p-1">Logout</button>
                 </form>
             </li>
         @endauth
 
         @guest
             <li>
-                <a href="{{ route('login') }}" class="p-1 m-2 bg-gray-200 rounded">Login</a>
+                <a href="{{ route('login') }}" class="p-1 m-2 bg-blue-600 hover:bg-blue-700 text-white hover:text-white rounded">Login</a>
             </li>
             <li>
-                <a href="{{ route('register') }}" class="p-1 m-2 bg-gray-200 rounded">Register</a>
+                <a href="{{ route('register') }}" class="p-1 m-2 bg-blue-600 hover:bg-blue-700 text-white hover:text-white rounded">Register</a>
             </li>
         @endguest
     </ul>
