@@ -138,6 +138,8 @@ class GameController extends Controller
 
         $game = Game::find($id);
         $game->attachTags($request->tagsGenre, 'genre');
+        $game->attachTags($request->tagsControl, 'control');
+        $game->attachTags($request->tagsType, 'type');
 
         return redirect()->route('game.show', $id);
     }
