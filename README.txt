@@ -3,7 +3,8 @@ Benötigte Programme:
 - composer (https://getcomposer.org/doc/00-intro.md)
 - Node JS (https://nodejs.org/en/download/)
 - Laravel (https://laravel.com/docs/8.x)
-- Datenbank (in unserem Fall XAMPP mit Apache und MySQL)
+- Datenbank, in unserem Fall XAMPP mit Apache und MySQL (https://www.apachefriends.org/de/download.html) 
+	Info: XAMMP mit php Version 8.0.1 sorgte bei uns für Probleme, Version 7.4.14 funktioniert soweit fehlerfrei
 
 Benötigte Dateien:
 
