@@ -35,7 +35,7 @@ Via 'cp .env.example .env' die .env Datei erzeugen, in welcher die wichtigsten E
 
 Schritt 6: .env Datei überprüfen
 
-Überprüfen, ob die Einstellungen übernommen wurde (siehe Bild in Ordner Sonstiges)
+Überprüfen, ob die Einstellungen übernommen wurde (siehe Env-Vorlage in Ordner Sonstiges)
 
 Schritt 7: Webseite lokal hosten
 
