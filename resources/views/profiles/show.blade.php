@@ -67,7 +67,7 @@
 
                                     @for($i = 0; $i<$user->highscores->count(); $i++)
                                         <tr>
-                                            <td class="text-center border border-black"><a href="{{ route('game.show', $user->highscores[$i]->game->id) }}">{{ $user->highscores[$i]->game->title }}</a></td>
+                                            <td class="text-center border border-black"><a href="{{ route('game.show', $user->highscores[$i]->game->id) }}" class="hover:text-gray-500">{{ $user->highscores[$i]->game->title }}</a></td>
                                             <td class="text-center border border-black">{{ $user->highscores[$i]->score }}</td>
                                             <td class="text-center border border-black">{{ $user->getHighscoreRank($user->highscores[$i]->game) }}</td>
                                         </tr>

@@ -46,7 +46,7 @@
 
                 {{ $games->links() }}
             @else
-                Keine Ergebnisse gefunden
+                <p class="p-4">Keine Ergebnisse gefunden</p>
             @endif
         </div>
     </div>
