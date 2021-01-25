@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47cc0b8b-af5a-48ab-b8ac-b1f0818f9d52" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/games/Tap Jumper/scenes/gameOverScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/games/Tap Jumper/scenes/gameOverScene.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/games/Tap Jumper/scenes/gameScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/games/Tap Jumper/scenes/gameScene.js" afterDir="false" />
-    </list>
+    <list default="true" id="47cc0b8b-af5a-48ab-b8ac-b1f0818f9d52" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -252,7 +248,7 @@
       <workItem from="1611413415434" duration="8568000" />
       <workItem from="1611489734193" duration="3735000" />
       <workItem from="1611495418946" duration="26000" />
-      <workItem from="1611577310028" duration="1313000" />
+      <workItem from="1611577310028" duration="2058000" />
     </task>
     <servers />
   </component>
