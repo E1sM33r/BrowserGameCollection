@@ -18,11 +18,11 @@ class GameController extends Controller
         if ($request->tagsGenre || $request->tagsControl || $request->tagsType){
             $gamesList = collect([]);
             if ($request->tagsGenre){
-                $gamesListGenre = Game::withAnyTags($request->tagsGenre)->where('title', 'LIKE', $search)->get();
+                $gamesListGenre = Game::withAnyTagsOfAnyType($request->tagsGenre)->where('title', 'LIKE', $search)->get();
                 $gamesList = $gamesListGenre;
             }
             if ($request->tagsControl){
-                $gamesListControl = Game::withAnyTags($request->tagsControl)->where('title', 'LIKE', $search)->get();
+                $gamesListControl = Game::withAnyTagsOfAnyType($request->tagsControl)->where('title', 'LIKE', $search)->get();
                 if ($gamesList->count() == 0){
                     $gamesList = $gamesListControl;
                 }else{
@@ -37,7 +37,7 @@ class GameController extends Controller
                 }
             }
             if ($request->tagsType){
-                $gamesListType = Game::withAnyTags($request->tagsType)->where('title', 'LIKE', $search)->get();
+                $gamesListType = Game::withAnyTagsOfAnyType($request->tagsType)->where('title', 'LIKE', $search)->get();
                 if ($gamesList->count() == 0){
                     $gamesList = $gamesListType;
                 }else{
@@ -136,9 +136,8 @@ class GameController extends Controller
             $imageArray ?? []
         ))->id;
 
-        $tags = array_merge($request->tagsGenre,$request->tagsControl, $request->tagsType);
         $game = Game::find($id);
-        $game->attachTags($tags);
+        $game->attachTags($request->tagsGenre, 'genre');
 
         return redirect()->route('game.show', $id);
     }
@@ -186,8 +185,10 @@ class GameController extends Controller
             $imageArray ?? [],
         ));
 
-        $tags = array_merge(\request('tagsGenre'), \request('tagsControl'), \request('tagsType'));
-        $game->syncTags($tags);
+
+        $game->syncTagsWithType(\request('tagsGenre'), 'genre');
+        $game->syncTagsWithType(\request('tagsControl'), 'control');
+        $game->syncTagsWithType(\request('tagsType'), 'type');
 
         return redirect()->route('game.show', $game->id);
     }

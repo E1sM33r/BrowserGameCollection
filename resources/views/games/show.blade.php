@@ -4,9 +4,22 @@
     <div class="flex justify-center">
         <div class="w-8/12 bg-gray-200 p-6 rounded-lg">
 
-            <div class="py-2">
-                <span class="font-medium text-4xl">{{ $game->title }}</span><br/>
-                <span>von {{ $game->developer }}</span>
+            <div class="py-2 flex justify-between">
+                <div>
+                    <span class="font-medium text-4xl">{{ $game->title }}</span><br/>
+                    <span>von {{ $game->developer }}</span>
+                </div>
+                <div class="p-4">
+                    @foreach($game->tags as $tag)
+                        @if($tag->name == 'Jump&Run' || $tag->name == 'Arcade' || $tag->name == 'Shooter')
+                            <span class="p-1 bg-red-500 rounded">{{ $tag->name }}</span>
+                        @elseif($tag->name == 'Tastatur' || $tag->name == 'Maus')
+                            <span class="p-1 bg-green-500 rounded">{{ $tag->name }}</span>
+                        @elseif($tag->name == 'Endlos' || $tag->name == 'Zeitbegrenzt')
+                            <span class="p-1 bg-yellow-500 rounded">{{ $tag->name }}</span>
+                        @endif
+                    @endforeach
+                </div>
             </div>
 
             <div class="flex justify-center py-2">

@@ -20,11 +20,21 @@
                         <div class="bg-gray-400 rounded-lg p-1 m-4 hover:bg-gray-500 hover:text-white">
                             <a href="{{route('game.show', $game->id)}}">
                                 <div class="flex flex-col items-center">
-                                    <p class="p-1">
+                                    <div class="w-full flex justify-end text-sm">
+                                        @foreach($game->tags as $tag)
+                                            @if($tag->name == 'Jump&Run' || $tag->name == 'Arcade' || $tag->name == 'Shooter')
+                                                <span class="px-0.5 mx-0.5 bg-red-500 rounded">{{ $tag->name }}</span>
+                                            @elseif($tag->name == 'Tastatur' || $tag->name == 'Maus')
+                                                <span class="px-0.5 mx-0.5 bg-green-500 rounded">{{ $tag->name }}</span>
+                                            @elseif($tag->name == 'Endlos' || $tag->name == 'Zeitbegrenzt')
+                                                <span class="px-0.5 mx-0.5 bg-yellow-500 rounded">{{ $tag->name }}</span>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    <p class="px-1">
                                         <span class="font-medium text-lg">{{$game->title}}</span>
                                         <span class="">von {{$game->developer}}</span>
                                     </p>
-
                                     <img src="{{$game->gameImage()}}" class="w-11/12 py-1">
 
                                     <div class="flex justify-between w-11/12">
