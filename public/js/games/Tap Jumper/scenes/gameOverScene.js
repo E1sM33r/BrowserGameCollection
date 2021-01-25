@@ -11,11 +11,11 @@ class gameOverScene extends Phaser.Scene {
     create(){
         const Score = this.add.text(400, 150, 'Score: 0', { fontSize: '32px', fill: '#FFF' });
         Score.setOrigin(0.5, 0.5);
-        if (endScore<0){
+        if (endScore < 0){
             score = 0;
-        }else{
-            score = endScore;
         }
+        score = endScore;
+
         Score.setText('Score: ' + score);
 
         if(score>highscore){
@@ -36,6 +36,7 @@ class gameOverScene extends Phaser.Scene {
         this.input.on('pointerdown', function (event) {
             isGameOver = false;
             birdHit = false;
+            gameOverInit = false;
             this.scene.start("gameScene");
         }, this);
     }

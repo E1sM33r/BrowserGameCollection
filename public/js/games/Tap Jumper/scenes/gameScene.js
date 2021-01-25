@@ -8,6 +8,7 @@ if(document.getElementById("oldHighscore")){
 }
 let isGameOver = false;
 let birdHit = false;
+let gameOverInit = false;
 var bird;
 var pipes;
 var ground;
@@ -16,12 +17,6 @@ var timer;
 var timedEvent;
 var timedEventScore;
 
-function gameOver(){
-    bird.setTint(0xff0000);
-    bird.angle += 10;
-    birdHit = true;
-    endScore = score;
-}
 
 class gameScene extends Phaser.Scene{
     constructor() {
@@ -79,7 +74,7 @@ class gameScene extends Phaser.Scene{
         highscoreLabel = this.add.text(630, 565, 'Highscore: ' + highscore, { font: "26px Arial", fill: "#ffffff" }).setDepth(1);
 
         // Kollisionen prüfen
-        this.physics.add.overlap(bird, pipes, gameOver, null, this);
+        this.physics.add.overlap(bird, pipes, this.gameOver, null, this);
 
     }
 
@@ -128,10 +123,23 @@ class gameScene extends Phaser.Scene{
 
     }
 
+    gameOver(){
+
+        if (!gameOverInit){
+            bird.setTint(0xff0000);
+            bird.angle += 10;
+            birdHit = true;
+            endScore = score;
+            this.time.addEvent({ delay: 1000, callback: function (){isGameOver = true;}, callbackScope: this, loop: false });
+            gameOverInit = true;
+        }
+
+    }
+
     update ()
     {
         if(bird.y > 580 || bird.y < 20){
-            isGameOver = true;
+            this.gameOver();
         }
 
         if (isGameOver){
