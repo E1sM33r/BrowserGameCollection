@@ -192,26 +192,22 @@ class gameScene extends Phaser.Scene {
         let rowFound = false;
         let height;
 
-        while (true) {
-            if (!rowFound) {
-                for (let i = 1; i < 11; i++) {
-                    if (i == randomRow) {
-                        if (!rowCheck[i]) {
-                            height = 36 * i + 32;
-                            rowCheck[i] = true;
-                            this.rowTimer(i);
-                            rowFound = true;
+        while (!rowFound) {
+            for (let i = 1; i < 11; i++) {
+                if (i == randomRow) {
+                    if (!rowCheck[i]) {
+                        height = 36 * i + 32;
+                        rowCheck[i] = true;
+                        this.rowTimer(i);
+                        rowFound = true;
+                    } else {
+                        if (randomRow < 10) {
+                            randomRow++;
                         } else {
-                            if (randomRow < 10) {
-                                randomRow++;
-                            } else {
-                                randomRow = 1;
-                            }
+                            randomRow = 1;
                         }
                     }
                 }
-            }else{
-                break;
             }
         }
 
