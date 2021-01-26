@@ -3,6 +3,9 @@ let bomb;
 let hourglass;
 let score = 0;
 let highscore = 0;
+if(document.getElementById("oldHighscore")){
+    highscore = document.getElementById('oldHighscore').value;
+}
 let ammo = 5;
 let reloadTime = 500;
 let shootCooldown = 500;
