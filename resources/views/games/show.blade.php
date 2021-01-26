@@ -74,7 +74,7 @@
                         @endauth
                         @guest()
                             <div class="flex items-center">
-                                <p class="px-1">2</p>
+                                <p class="px-1">{{$game->likes->count()}}</p>
                                 <span class="text-red-500 text-4xl">&hearts;</span>
                             </div>
                         @endguest

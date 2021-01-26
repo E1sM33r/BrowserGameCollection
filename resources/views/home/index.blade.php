@@ -22,11 +22,11 @@
                                 <div class="flex flex-col items-center">
                                     <div class="w-full flex justify-end text-sm">
                                         @foreach($game->tags as $tag)
-                                            @if($tag->name == 'Jump&Run' || $tag->name == 'Arcade' || $tag->name == 'Shooter')
+                                            @if($tag->type == 'genre')
                                                 <span class="px-0.5 mx-0.5 bg-red-500 rounded">{{ $tag->name }}</span>
-                                            @elseif($tag->name == 'Tastatur' || $tag->name == 'Maus')
+                                            @elseif($tag->type == 'control')
                                                 <span class="px-0.5 mx-0.5 bg-green-500 rounded">{{ $tag->name }}</span>
-                                            @elseif($tag->name == 'Endlos' || $tag->name == 'Zeitbegrenzt')
+                                            @elseif($tag->type == 'type')
                                                 <span class="px-0.5 mx-0.5 bg-yellow-500 rounded">{{ $tag->name }}</span>
                                             @endif
                                         @endforeach
