@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 25. Jan 2021 um 13:55
+-- Erstellungszeit: 26. Jan 2021 um 14:39
 -- Server-Version: 10.4.17-MariaDB
 -- PHP-Version: 7.4.13
 
@@ -188,21 +188,25 @@ CREATE TABLE `taggables` (
 --
 
 INSERT INTO `taggables` (`tag_id`, `taggable_type`, `taggable_id`) VALUES
-(1, 'App\\Models\\Game', 1),
-(2, 'App\\Models\\Game', 1),
-(2, 'App\\Models\\Game', 2),
-(2, 'App\\Models\\Game', 3),
-(2, 'App\\Models\\Game', 4),
-(3, 'App\\Models\\Game', 1),
-(3, 'App\\Models\\Game', 2),
-(3, 'App\\Models\\Game', 3),
-(3, 'App\\Models\\Game', 4),
-(4, 'App\\Models\\Game', 1),
-(4, 'App\\Models\\Game', 2),
-(4, 'App\\Models\\Game', 3),
-(5, 'App\\Models\\Game', 4),
-(6, 'App\\Models\\Game', 4),
-(7, 'App\\Models\\Game', 4);
+(8, 'App\\Models\\Game', 1),
+(8, 'App\\Models\\Game', 5),
+(8, 'App\\Models\\Game', 6),
+(9, 'App\\Models\\Game', 1),
+(9, 'App\\Models\\Game', 2),
+(9, 'App\\Models\\Game', 3),
+(9, 'App\\Models\\Game', 4),
+(10, 'App\\Models\\Game', 4),
+(11, 'App\\Models\\Game', 1),
+(11, 'App\\Models\\Game', 2),
+(11, 'App\\Models\\Game', 3),
+(11, 'App\\Models\\Game', 4),
+(12, 'App\\Models\\Game', 4),
+(12, 'App\\Models\\Game', 6),
+(13, 'App\\Models\\Game', 1),
+(13, 'App\\Models\\Game', 2),
+(13, 'App\\Models\\Game', 3),
+(14, 'App\\Models\\Game', 4),
+(14, 'App\\Models\\Game', 6);
 
 -- --------------------------------------------------------
 
@@ -225,13 +229,13 @@ CREATE TABLE `tags` (
 --
 
 INSERT INTO `tags` (`id`, `name`, `slug`, `type`, `order_column`, `created_at`, `updated_at`) VALUES
-(1, '{\"de\":\"Jump&Run\"}', '{\"de\":\"jumprun\"}', NULL, 1, '2021-01-25 12:49:48', '2021-01-25 12:49:48'),
-(2, '{\"de\":\"Arcade\"}', '{\"de\":\"arcade\"}', NULL, 2, '2021-01-25 12:49:48', '2021-01-25 12:49:48'),
-(3, '{\"de\":\"Tastatur\"}', '{\"de\":\"tastatur\"}', NULL, 3, '2021-01-25 12:49:48', '2021-01-25 12:49:48'),
-(4, '{\"de\":\"Endlos\"}', '{\"de\":\"endlos\"}', NULL, 4, '2021-01-25 12:49:48', '2021-01-25 12:49:48'),
-(5, '{\"de\":\"Shooter\"}', '{\"de\":\"shooter\"}', NULL, 5, '2021-01-25 12:53:29', '2021-01-25 12:53:29'),
-(6, '{\"de\":\"Maus\"}', '{\"de\":\"maus\"}', NULL, 6, '2021-01-25 12:53:29', '2021-01-25 12:53:29'),
-(7, '{\"de\":\"Zeitbegrenzt\"}', '{\"de\":\"zeitbegrenzt\"}', NULL, 7, '2021-01-25 12:53:29', '2021-01-25 12:53:29');
+(8, '{\"de\":\"Jump&Run\"}', '{\"de\":\"jumprun\"}', 'genre', 1, '2021-01-25 18:20:50', '2021-01-25 18:20:50'),
+(9, '{\"de\":\"Arcade\"}', '{\"de\":\"arcade\"}', 'genre', 2, '2021-01-25 18:21:15', '2021-01-25 18:21:15'),
+(10, '{\"de\":\"Shooter\"}', '{\"de\":\"shooter\"}', 'genre', 3, '2021-01-25 18:21:27', '2021-01-25 18:21:27'),
+(11, '{\"de\":\"Tastatur\"}', '{\"de\":\"tastatur\"}', 'control', 4, '2021-01-25 18:21:39', '2021-01-25 18:21:39'),
+(12, '{\"de\":\"Maus\"}', '{\"de\":\"maus\"}', 'control', 5, '2021-01-25 18:21:47', '2021-01-25 18:21:47'),
+(13, '{\"de\":\"Endlos\"}', '{\"de\":\"endlos\"}', 'type', 6, '2021-01-25 18:22:04', '2021-01-25 18:22:04'),
+(14, '{\"de\":\"Zeitbegrenzt\"}', '{\"de\":\"zeitbegrenzt\"}', 'type', 7, '2021-01-25 18:22:12', '2021-01-25 18:22:12');
 
 -- --------------------------------------------------------
 
@@ -356,7 +360,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT für Tabelle `games`
 --
 ALTER TABLE `games`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT für Tabelle `highscores`
@@ -368,7 +372,7 @@ ALTER TABLE `highscores`
 -- AUTO_INCREMENT für Tabelle `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT für Tabelle `migrations`
@@ -392,7 +396,7 @@ ALTER TABLE `ratings`
 -- AUTO_INCREMENT für Tabelle `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT für Tabelle `users`
