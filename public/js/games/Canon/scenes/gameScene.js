@@ -4,6 +4,7 @@ if(document.getElementById("oldHighscore")){
     highscore = document.getElementById('oldHighscore').value;
 }
 var scoreText;
+let highscoreLabel;
 var timer;
 
 function destroyTarget (ball, target)
@@ -86,7 +87,8 @@ class gameScene extends Phaser.Scene {
         var angle;
 
 
-        scoreText = this.add.text(10, 10, 'Score: 0', { font: '20px Impact', fill: '#000' });
+        scoreText = this.add.text(10, 10, 'Score: 0', { font: '20px Impact', fill: '#000' }).setDepth(1);
+        highscoreLabel = this.add.text(520, 10, 'Highscore: ' + highscore, { font: '20px Impact', fill: '#000' }).setDepth(1);
 
         timer = this.time.delayedCall(8000, this.gameOver, [], this);
 

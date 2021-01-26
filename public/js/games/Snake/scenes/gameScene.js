@@ -7,6 +7,7 @@ if(document.getElementById("oldHighscore")){
     highscore = document.getElementById('oldHighscore').value;
 }
 var scoreText;
+let highscoreLabel;
 
 var UP = 0;
 var DOWN = 1;
@@ -21,8 +22,9 @@ class gameScene extends Phaser.Scene{
 
     preload ()
     {
-        this.load.image('food', '/js/games/snake/assets/food.png');
-        this.load.image('snake', '/js/games/snake/assets/snake.png');
+        this.load.image('food', '/js/games/Snake/assets/food.png');
+        this.load.image('snake', '/js/games/Snake/assets/snake.png');
+        this.load.image('specialFood', '/js/games/Snake/assets/specialFood.png');
     }
 
     create ()
@@ -44,15 +46,21 @@ class gameScene extends Phaser.Scene{
 
                     scene.children.add(this);
                 },
+
+
             eat: function (){
                 score++;
 
                 scoreText.setText('Score: ' + score);
+                if(score%5 === 0){
 
-                var x = Phaser.Math.Between(0, 39);
-                var y = Phaser.Math.Between(0, 29);
+                }
+                else{
+                    var x = Phaser.Math.Between(0, 39);
+                    var y = Phaser.Math.Between(0, 29);
 
-                this.setPosition(x * 16, y * 16);
+                    this.setPosition(x * 16, y * 16);
+                }
 
             }
         });
@@ -137,7 +145,7 @@ class gameScene extends Phaser.Scene{
                 this.direction = this.heading;
 
                 /* ShiftPosition für Anordnung des Körpers (Letzte Zahl gibt die Richtung an, dass jedes Element des Arrays den Wert des vorherigen nimmt (0), oder jedes nachkommende (1))*/
-                Phaser.Actions.ShiftPosition(this.body.getChildren(), this.headPosition.x*16, this.headPosition.y*16, 1);
+                Phaser.Actions.ShiftPosition(this.body.getChildren(), this.headPosition.x*16, this.headPosition.y*16, 1, this.tail);
 
                 var bodyCollision = Phaser.Actions.GetFirst(this.body.getChildren(), { x: this.head.x, y: this.head.y }, 1);
                 if (bodyCollision){
@@ -169,7 +177,7 @@ class gameScene extends Phaser.Scene{
                     food.eat();
 
                     if (this.speed > 20 && food.total % 5 === 0){
-                        this.speed -= 5;
+                        this.speed -= 3;
                     }
 
                     return true;
@@ -182,7 +190,8 @@ class gameScene extends Phaser.Scene{
 
         });
 
-        scoreText = this.add.text(10, 10, 'Score: 0', { font: '20px Impact', fill: '#000' });
+        scoreText = this.add.text(10, 10, 'score: 0', { font: '20px Impact', fill: '#000' }).setDepth(1);
+        highscoreLabel = this.add.text(510, 10, 'Highscore: ' + highscore, { font: '20px Impact', fill: '#000' }).setDepth(1);
 
         food = new Food(this, 3, 4);
 

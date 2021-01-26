@@ -10,6 +10,7 @@ if(document.getElementById("oldHighscore")){
 }
 var gameOver = false;
 var scoreText;
+var highscoreLabel;
 
 function collectStar (player, star)
 {
@@ -18,6 +19,7 @@ function collectStar (player, star)
     //  Add and update the score
     score += 10;
     scoreText.setText('Score: ' + score);
+
 
     if (stars.countActive(true) === 0)
     {
@@ -133,6 +135,7 @@ class gameScene extends Phaser.Scene{
 
         //  The score
         scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#000' });
+        highscoreLabel = this.add.text(520, 16, 'Highscore: ' + highscore, { fontSize: '32px', fill: '#000' }).setDepth(1);
 
         //  Collide the player and the stars with the platforms
         this.physics.add.collider(player, platforms);
