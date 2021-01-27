@@ -18,12 +18,12 @@
                 @can('update', $user->profile)
                     <div>
                         <a href="/account/{{$user->id}}/edit">
-                            <div class="bg-blue-500 rounded-lg p-1 m-1 hover:bg-blue-600 text-white">
+                            <div class="bg-blue-500 rounded-lg px-5 py-2 m-1 hover:bg-blue-600 text-white">
                                 Account bearbeiten
                             </div>
                         </a>
                         <a href="/profile/{{$user->id}}/edit">
-                            <div class="bg-blue-500 rounded-lg p-1 m-1 text-center hover:bg-blue-600 text-white">
+                            <div class="bg-blue-500 rounded-lg px-5 py-2 m-1 text-center hover:bg-blue-600 text-white">
                                 Profil bearbeiten
                             </div>
                         </a>

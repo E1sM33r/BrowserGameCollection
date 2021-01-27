@@ -12,10 +12,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfilesController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\UserController;
-use Illuminate\Auth\Events\PasswordReset;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
 
 // Auth Routes

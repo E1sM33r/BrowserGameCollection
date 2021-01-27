@@ -12,11 +12,11 @@
                 <div class="p-4">
                     @foreach($game->tags as $tag)
                         @if($tag->name == 'Jump&Run' || $tag->name == 'Arcade' || $tag->name == 'Shooter')
-                            <span class="p-1 bg-red-500 rounded">{{ $tag->name }}</span>
+                            <span class="py-1 px-2 mx-1 bg-red-500 rounded text-white">{{ $tag->name }}</span>
                         @elseif($tag->name == 'Tastatur' || $tag->name == 'Maus')
-                            <span class="p-1 bg-green-500 rounded">{{ $tag->name }}</span>
+                            <span class="py-1 px-2 mx-1 bg-green-500 rounded text-white">{{ $tag->name }}</span>
                         @elseif($tag->name == 'Endlos' || $tag->name == 'Zeitbegrenzt')
-                            <span class="p-1 bg-yellow-500 rounded">{{ $tag->name }}</span>
+                            <span class="py-1 px-2 mx-1 bg-yellow-500 rounded text-white">{{ $tag->name }}</span>
                         @endif
                     @endforeach
                 </div>

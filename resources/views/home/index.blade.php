@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex justify-center">
-        <div class="w-8/12 bg-gray-200 p-6 rounded-lg">
+        <div class="2xl:w-8/12 xl:w-8/12 md:w-11/12 sm:w-11/12 bg-gray-200 p-6 rounded-lg">
 
             @if (session('status'))
                 <div class="bg-blue-500 p-4 rounded-lg mb-6 text-white text-center">
@@ -14,27 +14,27 @@
 
             @if ($games->count())
 
-                <div class="grid gap-4 grid-cols-3 pb-2" id="app">
+                <div class="grid 2xl:gap-4 2xl:grid-cols-3 xl:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 pb-2 overflow-hidden" id="app">
                     @foreach($games as $game)
 
-                        <div class="bg-gray-400 rounded-lg p-1 m-4 hover:bg-gray-500 hover:text-white">
+                        <div class="bg-gray-400 rounded-lg p-1 m-4 hover:bg-gray-500 hover:text-white min-w-min">
                             <a href="{{route('game.show', $game->id)}}">
                                 <div class="flex flex-col items-center">
                                     <div class="w-full flex justify-end text-sm">
                                         @foreach($game->tags as $tag)
                                             @if($tag->type == 'genre')
-                                                <span class="px-0.5 mx-0.5 bg-red-500 rounded">{{ $tag->name }}</span>
+                                                <span class="px-0.5 mx-1 mt-1 bg-red-500 rounded text-white">{{ $tag->name }}</span>
                                             @elseif($tag->type == 'control')
-                                                <span class="px-0.5 mx-0.5 bg-green-500 rounded">{{ $tag->name }}</span>
+                                                <span class="px-0.5 mx-1 mt-1 bg-green-500 rounded text-white">{{ $tag->name }}</span>
                                             @elseif($tag->type == 'type')
-                                                <span class="px-0.5 mx-0.5 bg-yellow-500 rounded">{{ $tag->name }}</span>
+                                                <span class="px-0.5 mx-1 mt-1 bg-yellow-500 rounded text-white">{{ $tag->name }}</span>
                                             @endif
                                         @endforeach
                                     </div>
-                                    <p class="px-1">
-                                        <span class="font-medium text-lg">{{$game->title}}</span>
-                                        <span class="">von {{$game->developer}}</span>
-                                    </p>
+                                    <div class="px-1 flex flex-nowrap items-center whitespace-nowrap">
+                                        <p class="font-medium text-lg px-2">{{$game->title}}</p>
+                                        <p class="">von {{$game->developer}}</p>
+                                    </div>
                                     <img src="{{$game->gameImage()}}" class="w-11/12 py-1">
 
                                     <div class="flex justify-between w-11/12">
