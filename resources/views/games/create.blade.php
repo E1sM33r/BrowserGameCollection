@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex justify-center">
-        <div class="w-4/12 bg-gray-200 p-6 rounded-lg">
+        <div class="2xl:w-2/6 xl:w-3/6 lg:w-3/6 md:w-4/6 sm:w-10/12 bg-gray-200 p-6 rounded-lg">
 
             <div class="text-2xl font-medium mb-4">
                 Spiel hinzufügen

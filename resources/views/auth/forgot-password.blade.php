@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex justify-center">
-        <div class="w-4/12 bg-gray-200 p-6 rounded-lg">
+        <div class="2xl:w-2/6 xl:w-3/6 lg:w-3/6 md:w-4/6 sm:w-10/12 bg-gray-200 p-6 rounded-lg">
             @if (session('status'))
                 <div class="bg-blue-500 p-4 rounded-lg mb-6 text-white text-center">
                     {{ session('status') }}

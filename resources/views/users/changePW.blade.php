@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex justify-center">
-        <div class="w-4/12 bg-gray-200 p-6 rounded-lg">
+        <div class="2xl:w-2/6 xl:w-3/6 lg:w-3/6 md:w-4/6 sm:w-10/12 bg-gray-200 p-6 rounded-lg">
 
             <div class="flex justify-between">
                 <div class="text-2xl font-medium mb-4">
@@ -10,7 +10,7 @@
                 </div>
 
                 <a href="/account/{{$user->id}}/edit">
-                    <div class="bg-blue-500 rounded-lg p-1 text-white hover:bg-blue-600">
+                    <div class="bg-blue-500 rounded-lg px-4 py-2 text-white hover:bg-blue-600">
                         Abbrechen
                     </div>
                 </a>

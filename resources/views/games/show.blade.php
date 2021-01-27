@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex justify-center">
-        <div class="w-8/12 bg-gray-200 p-6 rounded-lg">
+        <div class="w-8/12 min-w-min bg-gray-200 p-6 rounded-lg">
 
             <div class="py-2 flex justify-between">
                 <div>
@@ -96,7 +96,7 @@
             <div class="py-2">
                 <span class="font-medium text-xl">Highscores</span>
                 <div class="flex flex-col items-center">
-                    <table class="w-1/2 table-fixed border-collapse">
+                    <table class="2xl:w-1/2 md:w-3/4 table-fixed border-collapse">
                         <tr>
                             <th class="w-1/6 bg-white border border-black">Position</th>
                             <th class="w-1/2 bg-gray-50 border border-black">Nickname</th>

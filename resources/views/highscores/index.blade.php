@@ -2,15 +2,15 @@
 
 @section('content')
     <div class="flex justify-center">
-        <div class="w-8/12 bg-gray-200 p-6 rounded-lg">
+        <div class="2xl:w-8/12 xl:w-8/12 md:w-11/12 sm:w-11/12 bg-gray-200 p-6 rounded-lg">
 
             <div class="flex justify-between pt-4">
 
-                <div class="w-2/12 bg-gray-400 rounded-lg mt-6">
+                <div class="w-2/12 min-w-min bg-gray-400 rounded-lg mt-6">
                     <p class="font-medium text-2xl text-center py-4">Games</p>
                     <div class="flex flex-col text-center items-center">
                         @foreach($games as $game)
-                            <a href="{{ route('highscores.game', $game) }}" class="m-2 py-0.5 bg-blue-500 rounded-lg w-3/4 hover:bg-blue-600">{{ $game->title }}</a>
+                            <a href="{{ route('highscores.game', $game) }}" class="min-w-min m-2 py-0.5 bg-blue-500 rounded-lg w-3/4 hover:bg-blue-600">{{ $game->title }}</a>
                         @endforeach
                     </div>
                 </div>
