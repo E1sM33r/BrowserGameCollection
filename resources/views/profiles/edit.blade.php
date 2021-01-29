@@ -23,7 +23,7 @@
                     <label for="description" class="mb-2">Beschreibung</label>
                     <textarea name="description" id="description" placeholder="Beschreibung..." maxlength="1200"
                               class="bg-white border-2 w-full p-4 rounded-lg h-80 resize-none
-                @error('name') border-red-500 @enderror">{{ old('description') ?? $user->profile->description }}</textarea>
+                @error('description') border-red-500 @enderror">{{ old('description') ?? $user->profile->description }}</textarea>
 
                     @error('description')
                     <div class="text-red-500 mt-2 text-sm">

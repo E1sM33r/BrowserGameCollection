@@ -26,6 +26,7 @@ Als nächstes muss die vorbereitete Datenbank angelegt werden. Dazu die sql-Date
 Schritt 4: Composer und NPM Dependencies installieren
 
 Via 'composer install', 'npm install' und 'npm run dev' im Projektverzeichnis alle zugehörigen und benötigten Pakete installieren.
+Vermutlich muss eine Komponente manuell installiert werden. Dazu den angezeigten Behfehl eingeben und anschließend 'npm run dev' erneut ausführen.
 
 Schritt 5: .env Datei kopieren
 

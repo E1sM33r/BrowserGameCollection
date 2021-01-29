@@ -10,4 +10,7 @@ return [
         'string' => 'Das Passwort muss mindestens :min Zeichen lang sein.',
         'array' => 'The :attribute must have at least :min items.',
     ],
+    'max' => [
+        'string' => 'Maximal :max Zeichen erlaubt.',
+    ],
 ];

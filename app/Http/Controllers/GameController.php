@@ -91,7 +91,11 @@ class GameController extends Controller
 
         $highscores = Highscore::hydrate($highscoresData);
 
-        return view('games.show', compact('game', 'highscores'));
+        $comments = collect($game->comments)->sortByDesc('created_at')->paginate(10);
+
+        //dd($comments);
+
+        return view('games.show', compact('game', 'highscores', 'comments'));
     }
 
     public function create()

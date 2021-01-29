@@ -70,6 +70,11 @@ class User extends Authenticatable
         return$this->hasMany(Highscore::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function hasHighscore(Game $game)
     {
         $highscores = $this->highscores;

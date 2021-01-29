@@ -124,6 +124,74 @@
                 </div>
             </div>
 
+            <hr class="border-gray-500">
+
+            <div class="py-2">
+                <span class="font-medium text-xl">Kommentare</span>
+
+                @auth()
+                    <form action="{{ route('game.comment', $game) }}" method="post" class="mt-2 mb-4">
+                        @CSRF
+                        <textarea name="comment" id="comment" placeholder="Kommentar schreiben..." maxlength="800"
+                                  class="bg-white border-2 w-full p-4 rounded-lg resize-none @error('comment') border-red-500 @enderror"></textarea>
+
+                        @error('comment')
+                        <div class="text-red-500 my-1 text-sm">
+                            {{ $message }}
+                        </div>
+                        @enderror
+
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded font-medium w-auto hover:bg-blue-600">Kommentieren</button>
+                    </form>
+                @endauth
+
+                <div class="my-2 rounded">
+                    <div class="my-2 bg-white rounded">
+                        @if($game->comments->count() > 0)
+                            @foreach($comments as $comment)
+                                <div class="flex items-center justify-between mt-2">
+                                    <div class="flex items-center">
+                                        <div>
+                                            @if($comment->user->profile->image == 'default')
+                                                <a href="{{ route('profiles.show', $comment->user->username) }}" class="w-16 min-w-min"><img src="{{asset('images/defaultImages/ProfileDefault.png')}}" class="w-16 h-auto m-2 shadow rounded-full align-middle border-none"></a>
+                                            @else
+                                                <a href="{{ route('profiles.show', $comment->user->username) }}" class="w-16 min-w-min"><img src="/storage/{{ $comment->user->profile->image }}" class="w-16 h-auto m-2 shadow rounded-full align-middle border-none"></a>
+                                            @endif
+                                        </div>
+                                        <div class="pl-2 pr-4">
+                                            <div>
+                                                <a href="{{ route('profiles.show', $comment->user->username) }}" class="font-medium hover:text-gray-600">{{ $comment->user->username }}</a>
+                                                <span class="text-sm italic">{{ $comment->created_at->diffForHumans() }}</span>
+                                            </div>
+                                            <p class="text-sm 2xl:max-w-6xl xl:max-w-3xl lg:max-w-2xl md:max-w-2xl sm:max-w-2xl break-words">
+                                                {{ $comment->comment }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        @auth()
+                                            @if($comment->ownedBy(auth()->user()))
+                                                <form action="{{ route('comment.delete', $comment) }}" method="post" class="min-w-min px-2">
+                                                    @CSRF
+                                                    @method('DELETE')
+                                                    <button type="submit" class="bg-red-500 text-white px-2 py-1 text-sm rounded font-medium w-auto hover:bg-red-600">Löschen</button>
+                                                </form>
+                                            @endif
+                                        @endauth
+                                    </div>
+                                </div>
+                                <hr class="border-gray-400 mt-2">
+                            @endforeach
+                        @else
+                            <div class="flex justify-center font-medium">
+                                <p>Keine Kommentare vorhanden!</p>
+                            </div>
+                        @endif
+                    </div>
+                    {{ $comments->links() }}
+                </div>
+            </div>
+
         </div>
     </div>
 

@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\GameLikeController;
@@ -61,6 +62,8 @@ Route::get('/game/{game}/edit', [GameController::class, 'edit'])->name('game.edi
 Route::patch('/game/{game}', [GameController::class, 'update'])->name('game.update');
 Route::post('/game/{game}/highscore', [HighscoreController::class, 'store'])->name('game.addHighscore');
 Route::post('/game/{game}/rate', [RatingController::class, 'store'])->name('game.rate');
+Route::post('/game/{game}/comment', [CommentController::class, 'store'])->name('game.comment');
+Route::delete('/comment/{comment}/delete', [CommentController::class, 'destroy'])->name('comment.delete');
 
 Route::post('/game/{game}/likes', [GameLikeController::class, 'store'])->name('game.like');
 Route::delete('/game/{game}/likes', [GameLikeController::class, 'destroy'])->name('game.like');
