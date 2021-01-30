@@ -31,22 +31,20 @@
                 @endcan
             </div>
 
-            <div class="flex justify-between p-3">
+            <div class="flex flex-col justify-between p-3">
 
-                <div class="w-1/4 min-w-a bg-gray-200 p-3">
-                    @if($user->profile->image == 'default')
-                        <img src="{{asset('images/defaultImages/ProfileDefault.png')}}" class="shadow rounded-full max-w-full h-auto align-middle border-none">
-                    @else
-                    <img src="/storage/{{ $user->profile->image }}" class="shadow rounded-full max-w-full h-auto align-middle border-none">
-                    @endif
-                </div>
-                <div class="w-3/4 min-w-min bg-gray-50 shadow rounded-lg p-3 flex flex-col justify-between">
+                <div class="min-w-min bg-gray-50 shadow rounded-lg p-3 flex flex-col justify-between">
                     <div class="flex justify-between flex-nowrap">
                         <div class="w-1/2">
-                            <div class="text-lg px-3">
-                                <span class="font-medium">Name: </span>{{ $user->name }} <br/>
+                            <div class="text-lg px-3 flex items-center">
+                                @if($user->profile->image == 'default')
+                                    <img src="{{asset('images/defaultImages/ProfileDefault.png')}}" class="shadow rounded-full w-1/3 h-auto align-middle border-none">
+                                @else
+                                    <img src="/storage/{{ $user->profile->image }}" class="shadow rounded-full w-1/3 h-auto align-middle border-none">
+                                @endif
+                                <span class="font-medium pl-4 pr-1">Name: </span>{{ $user->name }} <br/>
                             </div>
-                            <div class="py-5">
+                            <div class="py-5 px-1">
                                 <div class="font-bold text-2xl p-3">
                                     Beschreibung
                                 </div>
@@ -83,6 +81,37 @@
                         Mitglied seit {{ $user->created_at->format('d/m/Y') }}
                     </div>
                 </div>
+
+                <div class="my-2 rounded">
+                    <div class="my-2 bg-white rounded">
+                        <span class="font-bold text-2xl px-7 py-2">Kommentare von {{ $user->username }}</span>
+                        @if($user->comments->count() > 0)
+                            @foreach($comments as $comment)
+                                <hr class="border-gray-400 mt-2">
+                                <div class="flex items-center justify-between my-2 px-7 py-2">
+                                    <div class="flex items-center">
+                                        <div class="pr-4">
+                                            <div>
+                                                <span class="font-medium">{{ $comment->user->username }} - </span>
+                                                <span>in <a href="{{ route('game.show', $comment->game) }}" class="hover:text-gray-600">{{ $comment->game->title }}</a></span>
+                                                <span class="text-sm italic">{{ $comment->created_at->diffForHumans() }}</span>
+                                            </div>
+                                            <p class="text-sm 2xl:max-w-6xl xl:max-w-3xl lg:max-w-2xl md:max-w-2xl sm:max-w-2xl break-words">
+                                                {{ $comment->comment }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="px-7">
+                                <p class="py-4">{{ $user->username }} hat bislang keine Kommentare geschrieben.</p>
+                            </div>
+                        @endif
+                    </div>
+                    {{ $comments->links() }}
+                </div>
+
             </div>
         </div>
     </div>

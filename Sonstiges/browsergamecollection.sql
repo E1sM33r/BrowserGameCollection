@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 26. Jan 2021 um 14:39
+-- Erstellungszeit: 30. Jan 2021 um 14:53
 -- Server-Version: 10.4.17-MariaDB
--- PHP-Version: 7.4.13
+-- PHP-Version: 7.4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,21 @@ SET time_zone = "+00:00";
 --
 -- Datenbank: `browsergamecollection`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `game_id` bigint(20) UNSIGNED NOT NULL,
+  `comment` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -59,10 +74,11 @@ CREATE TABLE `games` (
 --
 
 INSERT INTO `games` (`id`, `title`, `developer`, `description`, `image`, `realGame`, `created_at`, `updated_at`) VALUES
-(1, 'example', 'Phaser', 'Sammle möglichst viele Sterne! Lass dich nicht von den Bomben treffen!\r\n\r\nSteuerung:\r\n- Bewegen: Pfeiltasten', NULL, 'true', '2021-01-25 12:49:48', '2021-01-25 12:49:48'),
-(2, 'Snake', 'BrowserGameCollection', 'Sammle möglichst viel Futter ein! Berühr dich dabei nicht selbst!\r\n\r\nSteuerung:\r\n- Bewegen: Pfeiltasten', NULL, 'true', '2021-01-25 12:50:50', '2021-01-25 12:50:50'),
-(3, 'Tap Jumper', 'BrowserGameCollection', 'Fliege durch die Röhren ohne sie zu berühren!\r\n\r\nSteuerung:\r\n- Fliegen: Leertaste', NULL, 'true', '2021-01-25 12:51:33', '2021-01-25 12:51:33'),
-(4, 'Moorhuhn', 'BrowserGameCollection', 'Schieße die Vögel ab, ohne die Bomben zu treffen. Treffe Sanduhren für Extra Zeit.\r\n\r\nGrau = 1 Punkt\r\nBlau = 2 Punkte\r\nRot = 5 Punkte\r\n\r\nSteuerung:\r\n- Zielen:  Maus\r\n- Schießen: Rechtsklick\r\n- Nachladen: R\r\n- Ton stummschalten: M', NULL, 'true', '2021-01-25 12:53:29', '2021-01-25 12:53:29');
+(1, 'example', 'Phaser', 'Sammle möglichst viele Sterne! Lass dich nicht von den Bomben treffen!\r\n\r\nSteuerung:\r\n- Bewegen: Pfeiltasten', 'games/BFsEMtWH8dNAMm5iI52VJRaaj8o2o2IUqTFlDdHY.png', 'true', '2021-01-25 12:49:48', '2021-01-30 13:51:02'),
+(2, 'Snake', 'BrowserGameCollection', 'Sammle möglichst viel Futter ein! Berühr dich dabei nicht selbst!\r\n\r\nSteuerung:\r\n- Bewegen: Pfeiltasten', 'games/v4aWYXvZjHjH806eZIJg05X0jJnf1G7kCkTAV6Q6.png', 'true', '2021-01-25 12:50:50', '2021-01-30 13:51:15'),
+(3, 'Tap Jumper', 'BrowserGameCollection', 'Fliege durch die Röhren ohne sie zu berühren!\r\n\r\nSteuerung:\r\n- Fliegen: Leertaste', 'games/c3Lcp3e4QRQ4HppTlT6uMhunwNAA8fHAWybBZ7D6.png', 'true', '2021-01-25 12:51:33', '2021-01-30 13:51:32'),
+(4, 'Moorhuhn', 'BrowserGameCollection', 'Schieße die Vögel ab, ohne die Bomben zu treffen. Treffe Sanduhren für Extra Zeit.\r\n\r\nGrau = 1 Punkt\r\nBlau = 2 Punkte\r\nRot = 5 Punkte\r\n\r\nSteuerung:\r\n- Zielen:  Maus\r\n- Schießen: Rechtsklick\r\n- Nachladen: R\r\n- Ton stummschalten: M', 'games/orc2b9Gor0l2RGlcUpCqLkZWeLCpliU2RUwrommi.png', 'true', '2021-01-25 12:53:29', '2021-01-30 13:51:43'),
+(7, 'Canon', 'BrowserGameCollection', 'Schieße alle Sterne ab.\r\n\r\nSteuerung:\r\n- Zielen: Maus\r\n- Schießen: Linksklick', 'games/GZwDJm4lQ91djVD27Ppedn85JKF2ty5F2rr4gz4c.png', 'true', '2021-01-28 20:03:31', '2021-01-30 13:53:04');
 
 -- --------------------------------------------------------
 
@@ -119,7 +135,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (7, '2021_01_01_120344_create_highscores_table', 1),
 (8, '2021_01_14_152800_create_likes_table', 1),
 (9, '2021_01_14_165143_create_ratings_table', 1),
-(10, '2021_01_20_133844_create_tag_tables', 1);
+(10, '2021_01_20_133844_create_tag_tables', 1),
+(11, '2021_01_29_122633_create_comments_table', 2);
 
 -- --------------------------------------------------------
 
@@ -153,7 +170,7 @@ CREATE TABLE `profiles` (
 --
 
 INSERT INTO `profiles` (`id`, `user_id`, `description`, `image`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Keine Beschreibung vorhanden...', 'default', '2021-01-25 12:48:18', '2021-01-25 12:48:18');
+(1, 3, 'Keine Beschreibung vorhanden...', 'default', '2021-01-30 13:47:22', '2021-01-30 13:47:22');
 
 -- --------------------------------------------------------
 
@@ -195,18 +212,22 @@ INSERT INTO `taggables` (`tag_id`, `taggable_type`, `taggable_id`) VALUES
 (9, 'App\\Models\\Game', 2),
 (9, 'App\\Models\\Game', 3),
 (9, 'App\\Models\\Game', 4),
+(9, 'App\\Models\\Game', 7),
 (10, 'App\\Models\\Game', 4),
+(10, 'App\\Models\\Game', 7),
 (11, 'App\\Models\\Game', 1),
 (11, 'App\\Models\\Game', 2),
 (11, 'App\\Models\\Game', 3),
 (11, 'App\\Models\\Game', 4),
 (12, 'App\\Models\\Game', 4),
 (12, 'App\\Models\\Game', 6),
+(12, 'App\\Models\\Game', 7),
 (13, 'App\\Models\\Game', 1),
 (13, 'App\\Models\\Game', 2),
 (13, 'App\\Models\\Game', 3),
 (14, 'App\\Models\\Game', 4),
-(14, 'App\\Models\\Game', 6);
+(14, 'App\\Models\\Game', 6),
+(14, 'App\\Models\\Game', 7);
 
 -- --------------------------------------------------------
 
@@ -260,11 +281,19 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `username`) VALUES
-(1, 'Marcel Sippel', 'MarcelSippel1@gmx.de', NULL, '$2y$10$5Ka0hZIwcwhr/9H5tVU0Z.HHVTOfkJCIgXgOk5hVQNzXFVbsd/rDy', NULL, '2021-01-25 12:48:18', '2021-01-25 12:48:18', 'Marcel');
+(3, 'Marcel Sippel', 'MarcelSippel1@gmx.de', NULL, '$2y$10$.RTgjY4P/E/AK85Rv8V1wuQfQKppezTdiTmfTcu1g7OcarKYabMvG', NULL, '2021-01-30 13:47:22', '2021-01-30 13:47:22', 'Marcel');
 
 --
 -- Indizes der exportierten Tabellen
 --
+
+--
+-- Indizes für die Tabelle `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `comments_user_id_foreign` (`user_id`),
+  ADD KEY `comments_game_id_foreign` (`game_id`);
 
 --
 -- Indizes für die Tabelle `failed_jobs`
@@ -351,6 +380,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT für Tabelle `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT für Tabelle `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -360,7 +395,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT für Tabelle `games`
 --
 ALTER TABLE `games`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT für Tabelle `highscores`
@@ -372,13 +407,13 @@ ALTER TABLE `highscores`
 -- AUTO_INCREMENT für Tabelle `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT für Tabelle `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT für Tabelle `profiles`
@@ -402,11 +437,18 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT für Tabelle `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints der exportierten Tabellen
 --
+
+--
+-- Constraints der Tabelle `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_game_id_foreign` FOREIGN KEY (`game_id`) REFERENCES `games` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `comments_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints der Tabelle `highscores`

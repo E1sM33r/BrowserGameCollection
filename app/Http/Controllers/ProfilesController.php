@@ -12,7 +12,9 @@ class ProfilesController extends Controller
     {
         $user = User::where('username', $user)->firstOrFail();
 
-        return view('profiles.show', compact('user'));
+        $comments = collect($user->comments)->sortByDesc('created_at')->paginate(10);
+
+        return view('profiles.show', compact('user', 'comments'));
     }
 
     public function edit(User $user)
