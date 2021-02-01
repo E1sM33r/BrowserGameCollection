@@ -36,7 +36,11 @@ Schritt 6: .env Datei überprüfen
 
 Überprüfen, ob die Einstellungen übernommen wurde (siehe Env-Vorlage in Ordner Sonstiges)
 
-Schritt 7: Webseite lokal hosten
+Schritt 7: Storage Link erstellen
+
+Über den Befehl 'php artisan storage:link' eine Verknüpfung zwischen dem Storage Ordner und dem Public Ordner erstellen, damit die Profilbilder und Game Thumbnails angezeigt werden können.
+
+Schritt 8: Webseite lokal hosten
 
 Via 'php artisan serve' das Projekt lokal hosten. Die seite ist über die angezeigte Adresse erreichbar.
 
