@@ -11,9 +11,7 @@ class gameOverScene extends Phaser.Scene {
     create(){
         const Score = this.add.text(400, 150, 'Score: 0', { fontSize: '32px', fill: '#FFF' });
         Score.setOrigin(0.5, 0.5);
-        if (endScore < 0){
-            score = 0;
-        }
+
         score = endScore;
 
         Score.setText('Score: ' + score);
@@ -28,7 +26,10 @@ class gameOverScene extends Phaser.Scene {
                 document.getElementById("highscoreForm").submit();
             }
         }
-        score = -3;
+        score = 0;
+        scoreCD = false;
+        pipeDelay = 2500;
+        timeElapsed = 0;
 
         const restartText = this.add.text(400,350, 'Click to restart');
         restartText.setOrigin(0.5, 0.5);

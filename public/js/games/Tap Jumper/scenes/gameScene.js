@@ -1,4 +1,4 @@
-let score = -3;
+let score = 0;
 let endScore;
 let labelScore;
 let highscoreLabel;
@@ -9,13 +9,17 @@ if(document.getElementById("oldHighscore")){
 let isGameOver = false;
 let birdHit = false;
 let gameOverInit = false;
+let scoreCD = false;
+let pipeDelay = 2500;
 var bird;
 var pipes;
+var scoreChecks;
 var ground;
 var spacebar;
-var timer;
+var timer = 0;
+var timeElapsed = 0;
 var timedEvent;
-var timedEventScore;
+
 
 
 class gameScene extends Phaser.Scene{
@@ -60,22 +64,31 @@ class gameScene extends Phaser.Scene{
 
         // Pipes hinzufügen
         pipes = this.add.group();
+        scoreChecks = this.add.group();
 
         this.addRowOfPipes();
-        timedEvent = this.time.addEvent({ delay: 1500, callback: this.addRowOfPipes, callbackScope: this, loop: true });
+        timedEvent = this.time.addEvent({ delay: pipeDelay, callback: this.addRowOfPipes, callbackScope: this, loop: true });
 
         // Score anzeigen
         labelScore = this.add.text(20, 20, 'Score: 0', { font: "30px Arial", fill: "#ffffff" }).setDepth(1);
-        timedEventScore = this.time.addEvent({ delay: 1500, callback: function(){
-            if(score>0){
-            labelScore.setText('Score: ' + score);
-            }
-            }, callbackScope: this, loop: true });
         highscoreLabel = this.add.text(630, 565, 'Highscore: ' + highscore, { font: "26px Arial", fill: "#ffffff" }).setDepth(1);
+
+        //Timer setzen
+        this.time.addEvent({ delay: 1000, callback: this.increaseTimer, callbackScope: this, loop: true });
 
         // Kollisionen prüfen
         this.physics.add.overlap(bird, pipes, this.gameOver, null, this);
+        this.physics.add.overlap(bird, scoreChecks, this.addScore, null, this);
 
+    }
+
+    addScore(){
+        if (!scoreCD && !birdHit){
+            score++;
+            labelScore.setText('Score: ' + score);
+            scoreCD = true;
+            this.time.addEvent({ delay: 1000, callback: function (){scoreCD=false;}, callbackScope: this, loop: false });
+        }
     }
 
     addOnePipe(x, y) {
@@ -105,6 +118,19 @@ class gameScene extends Phaser.Scene{
         pipe.outOfBoundsKill = true;
     }
 
+    addScoreCheck(x, y){
+        var scoreCheck = this.physics.add.sprite(x, y, 'pipe');
+
+        scoreChecks.add(scoreCheck);
+
+        scoreCheck.body.velocity.x = -200;
+
+        scoreCheck.checkWorldBounds = true;
+        scoreCheck.outOfBoundsKill = true;
+        scoreCheck.visible = false;
+
+    }
+
     addRowOfPipes() {
         var hole = Math.floor(Math.random() * 7) + 1;
 
@@ -117,10 +143,10 @@ class gameScene extends Phaser.Scene{
                 }else{
                 this.addOnePipe(960, i * 60 + 30);
                 }
+            }else{
+                this.addScoreCheck(1060, i * 60 + 30);
             }
         }
-        score += 1;
-
     }
 
     gameOver(){
@@ -134,6 +160,15 @@ class gameScene extends Phaser.Scene{
             gameOverInit = true;
         }
 
+    }
+
+    increaseTimer(){
+        timer++;
+        if (timer == timeElapsed + 10 && pipeDelay>1000){
+            pipeDelay-=150;
+            timedEvent.delay = pipeDelay;
+            timeElapsed+=10;
+        }
     }
 
     update ()
