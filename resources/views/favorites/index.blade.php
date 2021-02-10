@@ -31,7 +31,7 @@
                         <div class="bg-gray-400 rounded-lg p-1 m-4 hover:bg-gray-500 hover:text-white min-w-min">
                             <a href="{{route('game.show', $game->id)}}">
                                 <div class="flex flex-col items-center">
-                                    <div class="w-full flex justify-end text-sm">
+                                    <div class="w-full flex justify-end text-sm my-1">
                                         @foreach($game->tags as $tag)
                                             @if($tag->name == 'Jump&Run' || $tag->name == 'Arcade' || $tag->name == 'Shooter')
                                                 <span class="px-0.5 mx-1 mt-1 bg-red-500 rounded text-white">{{ $tag->name }}</span>
