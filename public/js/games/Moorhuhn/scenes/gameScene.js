@@ -26,7 +26,7 @@ let nextShot;
 let shootSound;
 let reloadSound;
 let reloadFinishSound;
-let rowCheck = [false, false, false, false, false, false, false, false, false, false]
+let rowCheck = [false, false, false, false, false, false, false, false, false, false];
 
 
 class gameScene extends Phaser.Scene {
