@@ -58,11 +58,12 @@
 
                     <div class="flex items-center">
                         @auth()
-                            <p class="px-2">({{ $game->likes->count() }} {{ Str::plural ('Like', $game->likes->count()) }})</p>
+                            <p class="px-2">({{ $game->likes->count() }})</p>
                             @if(!$game->hasLiked(auth()->user()))
-                                <form action="{{ route('game.like', $game) }}" method="post">
+                                <form action="{{ route('game.like', $game) }}" method="post" class="flex items-center">
                                     @CSRF
                                     <button type="submit" class="text-gray-500 text-4xl hover:text-red-500">&hearts;</button>
+                                    <span class="ml-1">merken</span>
                                 </form>
                             @else
                                 <form action="{{ route('game.like', $game) }}" method="post">
@@ -119,7 +120,7 @@
                         @endif
 
                     </table>
-                    <a href="{{ route('highscores.game', $game->id) }}" class="bg-blue-500 hover:bg-blue-600 text-white p-1 m-4 rounded">Alle Highscores anzeigen</a>
+                    <a href="{{ route('highscores.game', $game->id) }}" class="bg-blue-500 text-white px-4 py-2 mt-2 rounded font-medium w-auto hover:bg-blue-600">Alle Highscores anzeigen</a>
 
                 </div>
             </div>

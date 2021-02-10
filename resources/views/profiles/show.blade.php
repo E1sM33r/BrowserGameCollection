@@ -36,13 +36,15 @@
                 <div class="min-w-min bg-gray-50 shadow rounded-lg p-3 flex flex-col justify-between">
                     <div class="flex justify-between flex-nowrap">
                         <div class="w-1/2">
-                            <div class="text-lg px-3 flex items-center">
+                            <div class="text-lg px-3">
                                 @if($user->profile->image == 'default')
                                     <img src="{{asset('images/defaultImages/ProfileDefault.png')}}" class="shadow rounded-full w-1/3 h-auto align-middle border-none">
                                 @else
                                     <img src="/storage/{{ $user->profile->image }}" class="shadow rounded-full w-1/3 h-auto align-middle border-none">
                                 @endif
-                                <span class="font-medium pl-4 pr-1">Name: </span>{{ $user->name }} <br/>
+                                <div class="py-2">
+                                    <span class="font-medium pl-2 pr-1">Name: </span><span>{{ $user->name }}</span> <br/>
+                                </div>
                             </div>
                             <div class="py-5 px-1">
                                 <div class="font-bold text-2xl p-3">

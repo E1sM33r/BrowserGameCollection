@@ -20,7 +20,7 @@
         </li>
         @auth
         <li>
-            <a href="{{ route('favorites') }}" class="px-6 py-2 m-2 bg-blue-600 hover:bg-blue-700 text-white hover:text-white rounded">Favoriten</a>
+            <a href="{{ route('favorites') }}" class="px-6 py-2 m-2 bg-blue-600 hover:bg-blue-700 text-white hover:text-white rounded">Favoriten &hearts;</a>
         </li>
         @endauth
     </ul>
@@ -28,7 +28,7 @@
     <div class="w-5/12">
         <form action="{{ route('results') }}" method="get" class="flex flex-nowrap">
             @CSRF
-            <button class="bg-gray-400 hover:bg-gray-500 text-white hover:text-white rounded-l-lg px-6 py-2" type="button" value="search" @click={showSearchModal=true}>V</button>
+            <button class="bg-gray-400 hover:bg-gray-500 text-white hover:text-white rounded-l-lg px-6 py-2" type="button" value="search" @click={showSearchModal=true}>...</button>
             <input type="text" placeholder="Suchen..." name="search" class="w-3/4 bg-gray-200 px-6 py-2">
             <button class="bg-gray-400 hover:bg-gray-500 text-white hover:text-white rounded-r-lg px-6 py-2" type="submit" value="search">Suchen</button>
         </form>
@@ -52,7 +52,7 @@
                 <a href="{{ route('login') }}" class="px-6 py-2 m-2 bg-blue-600 hover:bg-blue-700 text-white hover:text-white rounded">Login</a>
             </li>
             <li>
-                <a href="{{ route('register') }}" class="px-6 py-2 m-2 bg-blue-600 hover:bg-blue-700 text-white hover:text-white rounded">Register</a>
+                <a href="{{ route('register') }}" class="px-6 py-2 m-2 bg-blue-600 hover:bg-blue-700 text-white hover:text-white rounded">Registrieren</a>
             </li>
         @endguest
     </ul>
@@ -73,27 +73,27 @@
                         <p class="underline">Genre</p>
                         <div class="bg-red-400 w-1/2 rounded">
                             <label for="JumpnRun" class="pr-2">Jump&Run</label>
-                            <input type="checkbox" name="tagsGenre[]" id="JumpnRun" class="bg-gray-100 border-2 p-4 rounded-lg" value="Jump&Run">
+                            <input type="checkbox" name="tagsGenre[]" id="JumpnRun" class="bg-gray-100 border-2 p-4 rounded-lg" value="Jump&Run" @isset($tagsGenre) @if(in_array('Jump&Run', $tagsGenre)) checked @endif @endisset>
                             <label for="Arcade" class="px-4">Arcade</label>
-                            <input type="checkbox" name="tagsGenre[]" id="Arcade" class="bg-gray-100 border-2 p-4 rounded-lg" value="Arcade">
+                            <input type="checkbox" name="tagsGenre[]" id="Arcade" class="bg-gray-100 border-2 p-4 rounded-lg" value="Arcade" @isset($tagsGenre) @if(in_array('Arcade', $tagsGenre)) checked @endif @endisset>
                             <label for="Shooter" class="px-4">Shooter</label>
-                            <input type="checkbox" name="tagsGenre[]" id="Shooter" class="bg-gray-100 border-2 p-4 rounded-lg" value="Shooter">
+                            <input type="checkbox" name="tagsGenre[]" id="Shooter" class="bg-gray-100 border-2 p-4 rounded-lg" value="Shooter" @isset($tagsGenre) @if(in_array('Shooter', $tagsGenre)) checked @endif @endisset>
                         </div>
 
                         <p class="underline">Steuerung</p>
                         <div class="bg-green-400 w-1/2 rounded">
                             <label for="Tastatur" class="pr-2">Tastatur</label>
-                            <input type="checkbox" name="tagsControl[0]" id="Tastatur" class="bg-gray-100 border-2 p-4 rounded-lg" value="Tastatur">
+                            <input type="checkbox" name="tagsControl[0]" id="Tastatur" class="bg-gray-100 border-2 p-4 rounded-lg" value="Tastatur" @isset($tagsControl) @if(in_array('Tastatur', $tagsControl)) checked @endif @endisset>
                             <label for="Maus" class="pr-2">Maus</label>
-                            <input type="checkbox" name="tagsControl[1]" id="Maus" class="bg-gray-100 border-2 p-4 rounded-lg" value="Maus">
+                            <input type="checkbox" name="tagsControl[1]" id="Maus" class="bg-gray-100 border-2 p-4 rounded-lg" value="Maus" @isset($tagsControl) @if(in_array('Maus', $tagsControl)) checked @endif @endisset>
                         </div>
 
                         <p class="underline">Highscore Typ</p>
                         <div class="bg-yellow-400 w-1/2 rounded">
                             <label for="Endlos" class="pr-2">Endlos</label>
-                            <input type="checkbox" name="tagsType[0]" id="Endlos" class="bg-gray-100 border-2 p-4 rounded-lg" value="Endlos">
+                            <input type="checkbox" name="tagsType[0]" id="Endlos" class="bg-gray-100 border-2 p-4 rounded-lg" value="Endlos" @isset($tagsType) @if(in_array('Endlos', $tagsType)) checked @endif @endisset>
                             <label for="Zeitbegrenzt" class="pr-2">Zeitbegrenzt</label>
-                            <input type="checkbox" name="tagsType[1]" id="Zeitbegrenzt" class="bg-gray-100 border-2 p-4 rounded-lg" value="Zeitbegrenzt">
+                            <input type="checkbox" name="tagsType[1]" id="Zeitbegrenzt" class="bg-gray-100 border-2 p-4 rounded-lg" value="Zeitbegrenzt" @isset($tagsType) @if(in_array('Zeitbegrenzt', $tagsType)) checked @endif @endisset>
                         </div>
 
                     </form>
