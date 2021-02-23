@@ -24,6 +24,7 @@ Route::post('/login', [LoginController::class, 'store']);
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
+
 Route::get('/account/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
 Route::get('/account/{user}/changepw', [UserController::class, 'editPW'])->name('user.editPW');
 Route::patch('/account/{user}', [UserController::class, 'update'])->name('user.update');

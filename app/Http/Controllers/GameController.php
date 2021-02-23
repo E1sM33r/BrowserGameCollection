@@ -14,15 +14,16 @@ class GameController extends Controller
     public function index(Request $request)
     {
         $search = '%'.$request->search.'%';
-
         if ($request->tagsGenre || $request->tagsControl || $request->tagsType){
             $gamesList = collect([]);
             if ($request->tagsGenre){
+
                 $gamesListGenre = Game::withAnyTagsOfAnyType($request->tagsGenre)->where('title', 'LIKE', $search)->get();
+
                 $gamesList = $gamesListGenre;
             }
             if ($request->tagsControl){
-                $gamesListControl = Game::withAnyTagsOfAnyType($request->tagsControl)->where('title', 'LIKE', $search)->get();
+                $gamesListControl = Game::withAllTagsOfAnyType($request->tagsControl)->where('title', 'LIKE', $search)->get();
                 if ($gamesList->count() == 0){
                     $gamesList = $gamesListControl;
                 }else{
@@ -118,7 +119,7 @@ class GameController extends Controller
             'description' => 'required',
             'image' => 'image',
             'realGame' => '',
-            'tagsGenre' => 'required',
+            'tagsGenre' => 'required|max:2',
             'tagsControl' => 'required',
             'tagsType' => 'required',
         ]);
@@ -141,6 +142,7 @@ class GameController extends Controller
         ))->id;
 
         $game = Game::find($id);
+
         $game->attachTags($request->tagsGenre, 'genre');
         $game->attachTags($request->tagsControl, 'control');
         $game->attachTags($request->tagsType, 'type');

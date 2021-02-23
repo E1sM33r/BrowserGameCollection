@@ -78,14 +78,22 @@
                             <input type="checkbox" name="tagsGenre[]" id="Arcade" class="bg-gray-100 border-2 p-4 rounded-lg" value="Arcade" @isset($tagsGenre) @if(in_array('Arcade', $tagsGenre)) checked @endif @endisset>
                             <label for="Shooter" class="px-4">Shooter</label>
                             <input type="checkbox" name="tagsGenre[]" id="Shooter" class="bg-gray-100 border-2 p-4 rounded-lg" value="Shooter" @isset($tagsGenre) @if(in_array('Shooter', $tagsGenre)) checked @endif @endisset>
+                            <label for="Racing" class="px-4">Racing</label>
+                            <input type="checkbox" name="tagsGenre[]" id="Racing" class="bg-gray-100 border-2 p-4 rounded-lg" value="Racing" @isset($tagsGenre) @if(in_array('Racing', $tagsGenre)) checked @endif @endisset>
+                            <label for="Abenteuer" class="px-4">Abenteuer</label>
+                            <input type="checkbox" name="tagsGenre[]" id="Abenteuer" class="bg-gray-100 border-2 p-4 rounded-lg" value="Abenteuer" @isset($tagsGenre) @if(in_array('Abenteuer', $tagsGenre)) checked @endif @endisset>
+                            <label for="Geschick" class="px-4">Geschick</label>
+                            <input type="checkbox" name="tagsGenre[]" id="Geschick" class="bg-gray-100 border-2 p-4 rounded-lg" value="Geschick" @isset($tagsGenre) @if(in_array('Geschick', $tagsGenre)) checked @endif @endisset>
                         </div>
 
                         <p class="underline">Steuerung</p>
                         <div class="bg-green-400 w-1/2 rounded">
                             <label for="Tastatur" class="pr-2">Tastatur</label>
-                            <input type="checkbox" name="tagsControl[0]" id="Tastatur" class="bg-gray-100 border-2 p-4 rounded-lg" value="Tastatur" @isset($tagsControl) @if(in_array('Tastatur', $tagsControl)) checked @endif @endisset>
+                            <input type="radio" name="tagsControl[]" id="Tastatur" class="bg-gray-100 border-2 p-4 rounded-lg" value="Tastatur" @isset($tagsControl) @if(in_array('Tastatur', $tagsControl)) checked @endif @endisset>
                             <label for="Maus" class="pr-2">Maus</label>
-                            <input type="checkbox" name="tagsControl[1]" id="Maus" class="bg-gray-100 border-2 p-4 rounded-lg" value="Maus" @isset($tagsControl) @if(in_array('Maus', $tagsControl)) checked @endif @endisset>
+                            <input type="radio" name="tagsControl[]" id="Maus" class="bg-gray-100 border-2 p-4 rounded-lg" value="Maus" @isset($tagsControl) @if(in_array('Maus', $tagsControl)) checked @endif @endisset>
+                            <label for="Maus&Tastatur" class="pr-2">Maus&Tastatur</label>
+                            <input type="radio" name="tagsControl[]" id="Maus&Tastatur" class="bg-gray-100 border-2 p-4 rounded-lg" value="Maus&Tastatur" @isset($tagsControl) @if(in_array('Maus&Tastatur', $tagsControl)) checked @endif @endisset>
                         </div>
 
                         <p class="underline">Highscore Typ</p>

@@ -53,13 +53,19 @@
                     <p class="font-medium">Tags</p>
 
                     <p class="underline">Genre</p>
-                    <div class="mb-2 flex items-center @error('tagsGenre') border-2 rounded-lg border-red-500 @enderror">
+                    <div class="mb-2 flex items-center flex-wrap @error('tagsGenre') border-2 rounded-lg border-red-500 @enderror">
                         <label for="JumpnRun" class="pr-2">Jump&Run</label>
-                        <input type="checkbox" name="tagsGenre[0]" id="JumpnRun" class="bg-gray-100 border-2 p-4 rounded-lg" value="Jump&Run">
-                        <label for="Arcade" class="px-4">Arcade</label>
-                        <input type="checkbox" name="tagsGenre[1]" id="Arcade" class="bg-gray-100 border-2 p-4 rounded-lg" value="Arcade">
-                        <label for="Shooter" class="px-4">Shooter</label>
-                        <input type="checkbox" name="tagsGenre[2]" id="Shooter" class="bg-gray-100 border-2 p-4 rounded-lg" value="Shooter">
+                        <input type="checkbox" name="tagsGenre[0]" id="JumpnRun" value="Jump&Run">
+                        <label for="Arcade" class="px-2">Arcade</label>
+                        <input type="checkbox" name="tagsGenre[1]" id="Arcade" value="Arcade">
+                        <label for="Shooter" class="px-2">Shooter</label>
+                        <input type="checkbox" name="tagsGenre[2]" id="Shooter" value="Shooter">
+                        <label for="Racing" class="px-2">Racing</label>
+                        <input type="checkbox" name="tagsGenre[3]" id="Racing" value="Racing">
+                        <label for="Abenteur" class="px-2">Abenteur</label>
+                        <input type="checkbox" name="tagsGenre[4]" id="Abenteur" value="Abenteur">
+                        <label for="Geschick" class="px-2">Geschick</label>
+                        <input type="checkbox" name="tagsGenre[5]" id="Geschick" value="Geschick">
                     </div>
                     @error('tagsGenre')
                     <div class="text-red-500 text-sm mb-2">
@@ -70,9 +76,11 @@
                     <p class="underline">Steuerung</p>
                     <div class="mb-2 flex items-center @error('tagsControl') border-2 rounded-lg border-red-500 @enderror">
                         <label for="Tastatur" class="pr-2">Tastatur</label>
-                        <input type="checkbox" name="tagsControl[0]" id="Tastatur" class="bg-gray-100 border-2 p-4 rounded-lg" value="Tastatur">
+                        <input type="radio" name="tagsControl[]" id="Tastatur" class="bg-gray-100 border-2 p-4 rounded-lg" value="Tastatur">
                         <label for="Maus" class="px-2">Maus</label>
-                        <input type="checkbox" name="tagsControl[1]" id="Maus" class="bg-gray-100 border-2 p-4 rounded-lg" value="Maus">
+                        <input type="radio" name="tagsControl[]" id="Maus" class="bg-gray-100 border-2 p-4 rounded-lg" value="Maus">
+                        <label for="Maus&Tastatur" class="px-2">Maus&Tastatur</label>
+                        <input type="radio" name="tagsControl[]" id="Maus&Tastatur" class="bg-gray-100 border-2 p-4 rounded-lg" value="Maus&Tastatur">
                     </div>
                     @error('tagsControl')
                     <div class="text-red-500 text-sm mb-2">

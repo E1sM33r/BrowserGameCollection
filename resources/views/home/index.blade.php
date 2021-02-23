@@ -24,9 +24,15 @@
                                         @foreach($game->tags as $tag)
                                             @if($tag->type == 'genre')
                                                 <span class="px-0.5 mx-1 mt-1 bg-red-500 rounded text-white">{{ $tag->name }}</span>
-                                            @elseif($tag->type == 'control')
+                                            @endif
+                                        @endforeach
+                                        @foreach($game->tags as $tag)
+                                            @if($tag->type == 'control')
                                                 <span class="px-0.5 mx-1 mt-1 bg-green-500 rounded text-white">{{ $tag->name }}</span>
-                                            @elseif($tag->type == 'type')
+                                            @endif
+                                        @endforeach
+                                        @foreach($game->tags as $tag)
+                                            @if($tag->type == 'type')
                                                 <span class="px-0.5 mx-1 mt-1 bg-yellow-500 rounded text-white">{{ $tag->name }}</span>
                                             @endif
                                         @endforeach
