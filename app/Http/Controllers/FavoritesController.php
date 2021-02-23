@@ -19,14 +19,15 @@ class FavoritesController extends Controller
         }
 
         $gamesList = Game::whereIn('id', $ids)->get();
+        $order = $request->order;
 
-        if ($request->order == 'ratings'){
+        if ($order == 'ratings'){
             $gamesList = $gamesList->sortByDesc(function ($game){return $game->usersRated().$game->averageRating();});
             $selected = 'total';
-        }elseif ($request->order == 'averageRating'){
+        }elseif ($order == 'averageRating'){
             $gamesList = $gamesList->sortByDesc(function ($game){return $game->averageRating().$game->usersRated().$game->likes->count();});
             $selected = 'average';
-        }elseif ($request->order == 'likes'){
+        }elseif ($order == 'likes'){
             $gamesList = $gamesList->sortByDesc(function ($game){return $game->likes->count().$game->averageRating();});
             $selected = 'likes';
         }else{
@@ -36,6 +37,7 @@ class FavoritesController extends Controller
 
         $games = collect($gamesList)->paginate(6);
 
-        return view('favorites.index', compact('games', 'selected'));
+
+        return view('favorites.index', compact('games', 'selected', 'order'));
     }
 }

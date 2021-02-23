@@ -82,7 +82,7 @@
                     @endforeach
                 </div>
 
-                {{ $games->links() }}
+                {{ $games->appends(['order' => $order])->links() }}
             @else
                 <p class="px-4">Keine Ergebnisse gefunden</p>
             @endif

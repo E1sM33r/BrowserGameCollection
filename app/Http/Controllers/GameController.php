@@ -56,13 +56,15 @@ class GameController extends Controller
             $gamesList = Game::where('title', 'LIKE', $search)->get();
         }
 
-        if ($request->order == 'ratings'){
+        $order = $request->order;
+
+        if ($order == 'ratings'){
             $gamesList = $gamesList->sortByDesc(function ($game){return $game->usersRated().$game->averageRating().$game->likes->count();});
             $selected = 'total';
-        }elseif ($request->order == 'averageRating'){
+        }elseif ($order == 'averageRating'){
             $gamesList = $gamesList->sortByDesc(function ($game){return $game->averageRating().$game->usersRated().$game->likes->count();});
             $selected = 'average';
-        }elseif ($request->order == 'likes'){
+        }elseif ($order == 'likes'){
             $gamesList = $gamesList->sortByDesc(function ($game){return $game->likes->count().$game->averageRating().$game->usersRated();});
             $selected = 'likes';
         }else{
@@ -78,7 +80,7 @@ class GameController extends Controller
         $tagsControl = $request->tagsControl;
         $tagsType = $request->tagsType;
 
-        return view('games.index', compact('games', 'selected', 'search', 'tagsGenre', 'tagsControl', 'tagsType'));
+        return view('games.index', compact('games', 'selected', 'search', 'tagsGenre', 'tagsControl', 'tagsType', 'order'));
     }
 
     public  function show(Game $game)

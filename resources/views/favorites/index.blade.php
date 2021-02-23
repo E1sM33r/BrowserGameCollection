@@ -71,8 +71,7 @@
 
                     @endforeach
                 </div>
-
-                {{ $games->links() }}
+                {{ $games->appends(['order' => $order])->links() }}
             @else
                 <p class="p-4 text-lg">Keine Favoriten gefunden</p>
             @endif

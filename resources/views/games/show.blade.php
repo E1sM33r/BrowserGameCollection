@@ -202,21 +202,29 @@
         </div>
     </div>
 
-    @auth()
-        <input type="hidden" name="oldHighscore" id="oldHighscore" value="{{ auth()->user()->hasHighscore($game) }}">
-        <form action="{{ route('game.addHighscore', $game->id) }}" method="post" id="highscoreForm">
-            @csrf
-            <input type="hidden" name="highscore" id="highscore" value="">
-        </form>
-    @endauth
+    @if($game->realGame == 'true')
 
-    <script src="{{ mix('js/app.js') }}"></script>
+        @auth()
+            <input type="hidden" name="oldHighscore" id="oldHighscore" value="{{ auth()->user()->hasHighscore($game) }}">
+            <form action="{{ route('game.addHighscore', $game->id) }}" method="post" id="highscoreForm">
+                @csrf
+                <input type="hidden" name="highscore" id="highscore" value="">
+            </form>
+        @endauth
+    @endif
+
+        <script src="{{ mix('js/app.js') }}"></script>
 @endsection
 
 @push('scripts')
+    @if($game->realGame == 'true')
     <script src="{{ asset('js/games')}}/{{ $game->title }}/scenes/gameScene.js"></script>
     <script src="{{ asset('js/games')}}/{{ $game->title }}/scenes/gameOverScene.js"></script>
     <script src="{{ asset('js/games')}}/{{ $game->title }}/scenes/titleScene.js"></script>
     <script src="{{ asset('js/games')}}/{{ $game->title }}/game.js"></script>
+    @endif
 @endpush
+
+
+
 
