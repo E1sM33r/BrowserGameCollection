@@ -33,7 +33,7 @@
 
             <div class="flex flex-col justify-between p-3">
 
-                <div class="min-w-min bg-gray-50 shadow rounded-lg p-3 flex flex-col justify-between">
+                <div class="min-w-min bg-white shadow rounded-lg p-3 flex flex-col justify-between">
                     <div class="flex justify-between flex-nowrap">
                         <div class="w-1/2">
                             <div class="text-lg px-3">
@@ -56,7 +56,7 @@
                             </div>
                         </div>
                         <div class="flex flex-col items-center w-1/2">
-                            <p class="pb-2 font-medium text-lg">Highscores</p>
+                            <p class="pb-2 font-bold text-2xl">Highscores</p>
                             @if($user->highscores->count()>0)
                                 <table class="w-3/4">
                                     <tr>
@@ -85,7 +85,7 @@
                 </div>
 
                 <div class="my-2 rounded">
-                    <div class="my-2 bg-white rounded">
+                    <div class="my-2 bg-white shadow rounded">
                         <span class="font-bold text-2xl px-7 py-2">Kommentare von {{ $user->username }}</span>
                         @if($user->comments->count() > 0)
                             @foreach($comments as $comment)
