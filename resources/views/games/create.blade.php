@@ -62,8 +62,8 @@
                         <input type="checkbox" name="tagsGenre[2]" id="Shooter" value="Shooter">
                         <label for="Racing" class="px-2">Racing</label>
                         <input type="checkbox" name="tagsGenre[3]" id="Racing" value="Racing">
-                        <label for="Abenteur" class="px-2">Abenteur</label>
-                        <input type="checkbox" name="tagsGenre[4]" id="Abenteur" value="Abenteur">
+                        <label for="Abenteuer" class="px-2">Abenteuer</label>
+                        <input type="checkbox" name="tagsGenre[4]" id="Abenteuer" value="Abenteuer">
                         <label for="Geschick" class="px-2">Geschick</label>
                         <input type="checkbox" name="tagsGenre[5]" id="Geschick" value="Geschick">
                     </div>
