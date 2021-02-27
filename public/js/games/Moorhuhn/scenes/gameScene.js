@@ -271,6 +271,7 @@ class gameScene extends Phaser.Scene {
         bird.outOfBoundsKill = true;
         bird.anims.play(anim, true);
         bird.on('pointerdown', this.birdHit);
+
     }
 
     birdHit(){

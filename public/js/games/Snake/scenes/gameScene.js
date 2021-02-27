@@ -25,6 +25,7 @@ class gameScene extends Phaser.Scene{
         this.load.image('food', '/js/games/Snake/assets/food.png');
         this.load.image('snake', '/js/games/Snake/assets/snake.png');
         this.load.image('specialFood', '/js/games/Snake/assets/specialFood.png');
+        this.load.image('specialFood2', '/js/games/Snake/assets/specialFood2.png');
     }
 
     create ()
@@ -52,10 +53,21 @@ class gameScene extends Phaser.Scene{
                 score++;
 
                 scoreText.setText('Score: ' + score);
-                if(score%5 === 0){
+                if( score % 10 === 0){
+                    this.setTexture('specialFood2');
+                    var x = Phaser.Math.Between(10, 39);
+                    var y = Phaser.Math.Between(10, 29);
 
+                    this.setPosition(x * 16, y * 16);
+                }else if(score % 5 === 0){
+                    this.setTexture('specialFood');
+                    var x = Phaser.Math.Between(10, 39);
+                    var y = Phaser.Math.Between(10, 29);
+
+                    this.setPosition(x * 16, y * 16);
                 }
                 else{
+                    this.setTexture('food');
                     var x = Phaser.Math.Between(0, 39);
                     var y = Phaser.Math.Between(0, 29);
 
@@ -145,6 +157,7 @@ class gameScene extends Phaser.Scene{
                 this.direction = this.heading;
 
                 /* ShiftPosition für Anordnung des Körpers (Letzte Zahl gibt die Richtung an, dass jedes Element des Arrays den Wert des vorherigen nimmt (0), oder jedes nachkommende (1))*/
+
                 Phaser.Actions.ShiftPosition(this.body.getChildren(), this.headPosition.x*16, this.headPosition.y*16, 1, this.tail);
 
                 var bodyCollision = Phaser.Actions.GetFirst(this.body.getChildren(), { x: this.head.x, y: this.head.y }, 1);

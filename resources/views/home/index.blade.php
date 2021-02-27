@@ -10,7 +10,7 @@
                 </div>
             @endif
 
-            <p class="text-2xl font-medium py-2 px-4">Home - Featured Games</p>
+            <p class="text-2xl font-medium py-2 px-4">Browser Game Collection - Empfohlene Spiele</p>
 
             @if ($games->count())
 

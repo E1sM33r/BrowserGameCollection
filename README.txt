@@ -46,3 +46,6 @@ Via 'php artisan serve' das Projekt lokal hosten. Die seite ist über die angeze
 
 
 Weitere Informationen: https://devmarketer.io/learn/setup-laravel-project-cloned-github-com/
+
+Hinweis: Wenn bei dem Upload von Profilbildern eine Fehlermeldung kommt liegt dies vermutlich an der verwendeten php-Version. Bei neueren Versionen kann es sein, dass eine bestimmt Extension, welche für die Verabeitung der Bilder
+benötigt wird nicht installiert wird. Bei uns hat es geholfen eine ältere php-Version (z.B. V. 7.4.14) zu verwenden oder die Extention (GD Library) nachträglich zu installieren.

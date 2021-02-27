@@ -13,6 +13,12 @@ function destroyTarget (ball, target)
     score += 1;
     scoreText.setText('Score: ' + score);
 }
+function destroyTarget2 (ball, target)
+{
+    target.disableBody(true, true);
+    score += 2;
+    scoreText.setText('Score: ' + score);
+}
 
 class gameScene extends Phaser.Scene {
     constructor() {
@@ -26,7 +32,11 @@ class gameScene extends Phaser.Scene {
         this.load.image('body', '/js/games/Canon/assets/ground.png');
         this.load.image('ball', '/js/games/Canon/assets/ball.png');
         this.load.image('target', '/js/games/Canon/assets/star.png');
+        this.load.image('target2', '/js/games/Canon/assets/Target2.png');
         this.load.image('obstacle', '/js/games/Canon/assets/obstacle.png');
+        this.load.image('obstacle2', '/js/games/Canon/assets/BoxLong.png');
+        this.load.image('obstacle3', '/js/games/Canon/assets/sticky.png');
+
     }
 
     create() {
@@ -75,22 +85,44 @@ class gameScene extends Phaser.Scene {
         var target8 = this.physics.add.image(x8,y8,'target');
         target8.body.setAllowGravity(false);
 
+        var x9 = Phaser.Math.Between(10, 600);
+        var y9 = Phaser.Math.Between(10, 100);
+        var target9 = this.physics.add.image(x9,y9,'target2');
+        target9.body.setAllowGravity(false);
+
+        var x10 = Phaser.Math.Between(10, 600);
+        var y10 = Phaser.Math.Between(10, 100);
+        var target10 = this.physics.add.image(x10,y10,'target2');
+        target10.body.setAllowGravity(false);
+
         var shooter = this.add.image(130, 440, 'shooter').setDepth(1);
         var body = this.add.image(129, 464, 'body').setDepth(1).setScale(2.0);
         var ball = this.physics.add.image(body.x , body.y, 'ball').setScale(1);
         ball.setBounce(0.9).setCollideWorldBounds(true);
         ball.disableBody(true, true);
-        var obstacle = this.physics.add.image(300, 300, 'obstacle').setScale(0.08).setImmovable(true);
+
+        var xObstacle1 = Phaser.Math.Between(50, 600);
+        var yObstacle1 = Phaser.Math.Between(100, 300);
+        var obstacle = this.physics.add.image(xObstacle1, yObstacle1, 'obstacle').setScale(0.08).setImmovable(true);
         obstacle.body.setAllowGravity(false);
-        var obstacle2 = this.physics.add.image(100, 100, 'obstacle').setScale(0.08).setImmovable(true);
+
+        var xObstacle2 = Phaser.Math.Between(50, 600);
+        var yObstacle2 = Phaser.Math.Between(100, 300);
+        var obstacle2 = this.physics.add.image(xObstacle2, yObstacle2, 'obstacle2').setScale(0.07).setImmovable(true).setAngle(45);
         obstacle2.body.setAllowGravity(false);
+
+        var xObstacle3 = Phaser.Math.Between(50, 600);
+        var yObstacle3 = Phaser.Math.Between(100, 300);
+        var obstacle3 = this.physics.add.image(xObstacle3, yObstacle3, 'obstacle3').setScale(2).setImmovable(true).setBounce(0);
+        obstacle3.body.setAllowGravity(false);
+
         var angle;
 
 
         scoreText = this.add.text(10, 10, 'Score: 0', { font: '20px Impact', fill: '#000' }).setDepth(1);
         highscoreLabel = this.add.text(520, 10, 'Highscore: ' + highscore, { font: '20px Impact', fill: '#000' }).setDepth(1);
 
-        timer = this.time.delayedCall(8000, this.gameOver, [], this);
+        timer = this.time.delayedCall(15000, this.gameOver, [], this);
 
         this.physics.add.collider(
             ball,
@@ -156,6 +188,22 @@ class gameScene extends Phaser.Scene {
                     destroyTarget(_ball, _target);
                 }
             })
+        this.physics.add.collider(
+            ball,
+            target9,
+            function(_ball, _target){
+                if(_ball.body.touching && _target.body.touching){
+                    destroyTarget2(_ball, _target);
+                }
+            })
+        this.physics.add.collider(
+            ball,
+            target10,
+            function(_ball, _target){
+                if(_ball.body.touching && _target.body.touching){
+                    destroyTarget2(_ball, _target);
+                }
+            })
 
 
         this.input.on('pointermove', function (pointer) {
@@ -171,15 +219,20 @@ class gameScene extends Phaser.Scene {
 
         this.physics.add.collider(ball, obstacle);
         this.physics.add.collider(ball, obstacle2);
+        this.physics.add.collider(ball, obstacle3);
 
         //für durchschuss animation
+
         //this.physics.add.overlap(ball, target, destroyTarget, null, this);
 
     }
 
 
     update (){
-        scoreText.setText('Score: ' + score + '\nTime: ' + Math.floor(8000 - timer.getElapsed()));
+
+        scoreText.setText('Score: ' + score + '\nTime: ' + Math.floor(15000 - timer.getElapsed()));
+
+
 
     }
 
@@ -191,4 +244,6 @@ class gameScene extends Phaser.Scene {
     }
 
 }
+
+
 
